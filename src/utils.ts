@@ -28,11 +28,11 @@ export const resolveCellValue = (
       return item[resolver] || EMPTY_STRING;
     } else {
       let iterator = item;
-      const propertyKeys = resolver.split(".");
+      const propertyPath = resolver.split(".");
 
-      for (const propertyKey of propertyKeys) {
-        if (!iterator[propertyKey]) return EMPTY_STRING;
-        iterator = iterator[propertyKey];
+      for (const segment of propertyPath) {
+        if (!iterator[segment]) return EMPTY_STRING;
+        iterator = iterator[segment];
       }
 
       return iterator || EMPTY_STRING;
