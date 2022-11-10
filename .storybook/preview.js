@@ -7,3 +7,11 @@ export const parameters = {
     }
   }
 };
+
+export const decorators = [
+  Story => (
+    <div style={{ fontFamily: "'Open Sans', sans-serif" }}>
+      <Story />
+    </div>
+  )
+];
