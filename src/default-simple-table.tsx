@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { SimpleTableProps } from "../dist/types";
 import { TableRoot, Tbody, Td, Th, Thead, Tr } from "./table";
 import { breakpoints, resolveCellValue } from "./utils";
+import styled from "styled-components";
+
+const DefaultSimpleTableRoot = styled(TableRoot)``;
 
 export const DefaultSimpleTable = <T,>({
   data,
@@ -15,6 +18,7 @@ export const DefaultSimpleTable = <T,>({
   const headAttrs = _headAttrs || {};
   const bodyAttrs = _bodyAttrs || {};
   const rowAttrs = _rowAttrs || {};
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -30,7 +34,7 @@ export const DefaultSimpleTable = <T,>({
   }, []);
 
   return (
-    <TableRoot {...rest}>
+    <DefaultSimpleTableRoot {...rest}>
       <Thead {...headAttrs}>
         <Tr {...rowAttrs}>
           {cols
@@ -81,6 +85,6 @@ export const DefaultSimpleTable = <T,>({
           );
         })}
       </Tbody>
-    </TableRoot>
+    </DefaultSimpleTableRoot>
   );
 };

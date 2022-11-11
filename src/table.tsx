@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const TableRoot = styled.table`
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.85rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Thead = styled.thead``;
