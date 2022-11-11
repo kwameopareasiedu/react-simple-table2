@@ -3,6 +3,7 @@ import {
   Badge,
   Box,
   Card,
+  Code,
   Container,
   createStyles,
   Image,
@@ -67,7 +68,6 @@ export default function App() {
               variant="filled"
               leftSection={<BiErrorAlt />}>
               <Text sx={{ textTransform: "none" }} weight="normal">
-                Please note:{" "}
                 <Text component="span" weight="bold">
                   React Simple Table2
                 </Text>{" "}
@@ -125,15 +125,16 @@ export default function App() {
             </Text>
 
             <Text mb="md">
-              It spits out standard a standard semantic table with thead, tbody,
-              tr, th and td elements which allow you to easily target for custom
-              styling
+              It spits out a table with standard HTML semantics:{" "}
+              <Code>table</Code>, <Code>thead</Code>, <Code>tbody</Code>,{" "}
+              <Code>tr</Code>, <Code>th</Code> and <Code>td</Code> elements
+              which allow you to easily target for custom styling
             </Text>
           </Card>
         </Container>
       </Box>
 
-      <Box py="5rem">
+      <Box id="features" py="5rem">
         <Container size="md">
           <Title mb="xl">Features</Title>
         </Container>
