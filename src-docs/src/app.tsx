@@ -2,6 +2,7 @@ import React from "react";
 import {
   Badge,
   Box,
+  Card,
   Container,
   createStyles,
   Image,
@@ -10,7 +11,7 @@ import {
 } from "@mantine/core";
 import { Navbar } from "./components";
 import BannerImg from "./assets/banner.png";
-import { BiErrorAlt, TiWarningOutline } from "react-icons/all";
+import { BiErrorAlt } from "react-icons/all";
 
 const useStyles = createStyles(theme => ({
   root: {
@@ -84,6 +85,57 @@ export default function App() {
       <Box py="xl">
         <Container size="md">
           <Image src={BannerImg}></Image>
+        </Container>
+      </Box>
+
+      <Box py="5rem" bg="gray.0">
+        <Container size="xs">
+          <Title>Why though?</Title>
+          <Text mb="xl" color="gray.7" italic>
+            Aren&apos;t there so many React table libraries to choose from?
+          </Text>
+
+          <Card shadow="xl">
+            <Text mb="md">
+              A lot of React &quot;table&quot; implementations function more or
+              less like a data-grid spreadsheet-like components with several
+              features like editing, reordering rows and columns, in-table
+              filtering, grouping and so much more. Don&apos;t get us wrong.
+              This isn&apos;t a bad thing. These components are feature-rich for
+              the reasons they exist.
+            </Text>
+
+            <Text mb="md">
+              However for a large chunk of apps, a lot of these features
+              aren&apos;t required and just add a lot of boilerplate code (
+              <Text component="span" italic>
+                and in some-cases even dealing with reducers for state
+                management
+              </Text>
+              ) to the component&apos;s setup.
+            </Text>
+
+            <Text mb="md">
+              <Text component="span" weight="bold">
+                React Simple Table2
+              </Text>{" "}
+              is just that; a table with simple but intuitive cell value
+              rendering. It make React tables clutter free without sacrificing
+              customizability.
+            </Text>
+
+            <Text mb="md">
+              It spits out standard a standard semantic table with thead, tbody,
+              tr, th and td elements which allow you to easily target for custom
+              styling
+            </Text>
+          </Card>
+        </Container>
+      </Box>
+
+      <Box py="5rem">
+        <Container size="md">
+          <Title mb="xl">Features</Title>
         </Container>
       </Box>
     </Box>
