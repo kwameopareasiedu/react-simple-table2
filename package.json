@@ -3,6 +3,14 @@
   "version": "1.0.0-test-0",
   "description": "A clean, composable, mobile-friendly table library for React",
   "author": "Kwame Opare Asiedu",
+  "homepage": "https://github.com/kwameopareasiedu/react-simple-table2#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwameopareasiedu/react-simple-table2"
+  },
+  "bugs": {
+    "url": "https://github.com/kwameopareasiedu/react-simple-table2/issues"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
