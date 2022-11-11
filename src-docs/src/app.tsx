@@ -11,7 +11,7 @@ import {
   Text,
   Title
 } from "@mantine/core";
-import { Navbar, Feature, Footer } from "./components";
+import { Feature, Footer, Navbar } from "./components";
 import BannerImg from "./assets/banner.png";
 import {
   BiErrorAlt,
@@ -109,12 +109,12 @@ export default function App() {
               less like a data-grid spreadsheet-like components with several
               features like editing, reordering rows and columns, in-table
               filtering, grouping and so much more. Don&apos;t get us wrong.
-              This isn&apos;t a bad thing. Data grid are feature-rich for the
+              This isn&apos;t a bad thing. Data grids are feature-rich for the
               reasons they exist.
             </Text>
 
             <Text mb="md">
-              However for a large chunk of apps, a lot of these features
+              However, for a large chunk of apps, a lot of these features
               aren&apos;t required and just add a lot of boilerplate code (
               <Text component="span" italic>
                 and in some-cases even dealing with reducers for state
@@ -129,8 +129,8 @@ export default function App() {
                 React Simple Table2
               </Text>{" "}
               is just that; a table with simple but intuitive cell value
-              rendering. It make React tables clutter free without sacrificing
-              customizability.
+              rendering. It simplifies React tables without sacrificing
+              customization options.
             </Text>
 
             <Text mb="md">
