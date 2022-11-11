@@ -8,5 +8,5 @@ export default {
     format: "es"
   },
   plugins: [typescript(), terser()],
-  externals: ["react", "styled-components"]
+  external: ["react", "styled-components"]
 };

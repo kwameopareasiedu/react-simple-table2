@@ -1,9 +1,9 @@
-import { HTMLAttributes } from "react";
 import {
   CellResolver,
   CellResolverFunction,
   SortData,
-  TableColumn
+  TableColumn,
+  TransformedTableColumn
 } from "../dist/types";
 
 const EMPTY_STRING = "";
@@ -57,17 +57,6 @@ export const resolveCellValue = (
     return (resolver as CellResolverFunction)(item, itemIndex);
   } else return null;
 };
-
-interface TransformedTableColumn {
-  id: string;
-  label: string | JSX.Element;
-  resolver: CellResolver;
-  sortable?: boolean;
-  visible: boolean;
-  headerVisible: boolean;
-  headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
-  bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
-}
 
 /**
  * Transforms the array of table columns into an array

@@ -40,9 +40,23 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   dataKeyFn?: (item: T, index: number) => string;
   headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
   bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
-  rowAttrsBuilder?: (item: T, index: number) => HTMLAttributes<HTMLTableRowElement>;
+  rowAttrsBuilder?: (
+    item: T,
+    index: number
+  ) => HTMLAttributes<HTMLTableRowElement>;
   mobileCards?: boolean;
   sort?: SortData;
   onSort?: (data: SortData) => void;
   loading?: boolean;
+}
+
+export interface TransformedTableColumn {
+  id: string;
+  label: string | JSX.Element;
+  resolver: CellResolver;
+  sortable?: boolean;
+  visible: boolean;
+  headerVisible: boolean;
+  headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+  bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
 }

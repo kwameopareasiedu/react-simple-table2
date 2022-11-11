@@ -1,0 +1,14 @@
+.idea
+.vscode
+.sass-cache
+node_modules
+src-docs
+*.iml
+*.tgz
+*.ini
+*.log
+.eslintrc.json
+.prettierrc.json
+babel.config.js
+rollup.config.js
+tsconfig.json

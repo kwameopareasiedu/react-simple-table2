@@ -1,10 +1,10 @@
 {
   "name": "react-simple-table2-lib",
-  "version": "1.0.0",
+  "version": "1.0.0-test-0",
   "description": "A clean, composable, mobile-friendly table library for React",
   "author": "Kwame Opare Asiedu",
   "main": "dist/index.js",
-  "typings": "dist/types.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "build": "rollup --config",
     "test": "jest",

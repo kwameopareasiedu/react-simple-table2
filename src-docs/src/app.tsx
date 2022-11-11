@@ -11,7 +11,7 @@ import {
   Text,
   Title
 } from "@mantine/core";
-import { Navbar } from "./components";
+import { Navbar, Feature, Footer } from "./components";
 import BannerImg from "./assets/banner.png";
 import {
   BiErrorAlt,
@@ -21,7 +21,6 @@ import {
   TbCode,
   TbComponents
 } from "react-icons/all";
-import { Feature } from "./components/feature";
 
 const useStyles = createStyles(theme => ({
   root: {
@@ -43,7 +42,7 @@ export default function App() {
     <Box className={classes.root}>
       <Navbar />
 
-      <Box py="xl">
+      <Box py="3rem">
         <Container size="xl">
           <Title
             order={1}
@@ -98,7 +97,7 @@ export default function App() {
       </Box>
 
       <Box py="5rem" bg="gray.0">
-        <Container size="xs">
+        <Container size="sm">
           <Title>Why though?</Title>
           <Text mb="xl" color="gray.7" italic>
             Aren&apos;t there so many React table libraries to choose from?
@@ -110,8 +109,8 @@ export default function App() {
               less like a data-grid spreadsheet-like components with several
               features like editing, reordering rows and columns, in-table
               filtering, grouping and so much more. Don&apos;t get us wrong.
-              This isn&apos;t a bad thing. These components are feature-rich for
-              the reasons they exist.
+              This isn&apos;t a bad thing. Data grid are feature-rich for the
+              reasons they exist.
             </Text>
 
             <Text mb="md">
@@ -121,7 +120,8 @@ export default function App() {
                 and in some-cases even dealing with reducers for state
                 management
               </Text>
-              ) to the component&apos;s setup.
+              ) to the component&apos;s setup. This issue is amplified if a lot
+              of simple tables are needed in these apps.
             </Text>
 
             <Text mb="md">
@@ -206,6 +206,43 @@ export default function App() {
           </Grid>
         </Container>
       </Box>
+
+      <Box id="usage" py="5rem" bg="gray.0">
+        <Container size="md">
+          <Title>Usage</Title>
+          <Text mb="xl" color="gray.7" italic>
+            Awesome! You&apos;ve made it this far, meaning you most likely want
+            to try out <Text component="span">React Simple Table2.</Text>
+          </Text>
+
+          <Title order={3}>Installation</Title>
+
+          <Text mb="md">
+            <Text component="span">React Simple Table2</Text> marks{" "}
+            <Code>React</Code> and <Code>Styled Components</Code> as peer
+            dependencies which must be installed alongside it
+          </Text>
+
+          <Code block bg="gray.1" mb="xl" p="md">
+            yarn add react styled-components react-simple-table2
+          </Code>
+
+          {/*<iframe*/}
+          {/*  src="https://codesandbox.io/embed/new?codemirror=1"*/}
+          {/*  // style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"*/}
+          {/*  style={{*/}
+          {/*    width: "100%",*/}
+          {/*    height: "500px",*/}
+          {/*    border: 0,*/}
+          {/*    borderRadius: "4px",*/}
+          {/*    overflow: "hidden"*/}
+          {/*  }}*/}
+          {/*  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"*/}
+          {/*  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>*/}
+        </Container>
+      </Box>
+
+      <Footer />
     </Box>
   );
 }
