@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { DefaultSimpleTable } from "./default-simple-table";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import djs from "dayjs";
+import { action } from "@storybook/addon-actions";
+import { SortData } from "../dist/types";
 
 djs.extend(advancedFormat);
 
@@ -110,6 +112,9 @@ const data = [
   }
 ];
 
+const logOnSort = action("Sorting data");
+const logOnRowClick = action("Clicked row");
+
 export default {
   title: "Default Simple Table",
   component: DefaultSimpleTable
@@ -202,6 +207,37 @@ export const WithMobileCards: ComponentStory<
         ["nested", "Nested Value", "nested.value"]
       ]}
       useCardsOnMobile
+    />
+  );
+};
+
+export const Sorting: ComponentStory<typeof DefaultSimpleTable> = () => {
+  const [sort, setSort] = useState<SortData>({ id: "name", dir: "asc" });
+
+  const onSort = (data: SortData) => {
+    setSort(data);
+    logOnSort(data);
+  };
+
+  return (
+    <DefaultSimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        [
+          "date",
+          "Created at",
+          item => djs(item.created_at).format("Do MMMM YYYY")
+        ],
+        ["nested", "Nested Value", "nested.value"]
+      ]}
+      sort={sort}
+      onSort={onSort}
+      rowAttrs={item => ({
+        style: {},
+        onClick: () => logOnRowClick(item)
+      })}
     />
   );
 };

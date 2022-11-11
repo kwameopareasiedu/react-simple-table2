@@ -1,5 +1,10 @@
 import { HTMLAttributes } from "react";
-import { CellResolver, CellResolverFunction, TableColumn } from "../dist/types";
+import {
+  CellResolver,
+  CellResolverFunction,
+  SortData,
+  TableColumn
+} from "../dist/types";
 
 const EMPTY_STRING = "";
 
@@ -64,6 +69,10 @@ interface TransformedTableColumn {
   bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
 }
 
+/**
+ * Transforms the array of table columns into an array
+ * of computed values that are required for rendering
+ */
 export const transformColumns = (
   cols: Array<TableColumn>,
   windowWidth: number,
@@ -95,4 +104,11 @@ export const transformColumns = (
         bodyAttrs: opts?.bodyAttrs
       };
     });
+};
+
+export const cycleSortData = (data: SortData, id: string): SortData => {
+  if (data.id !== id) return { id, dir: "asc" };
+  if (data.dir === "asc") return { ...data, dir: "desc" };
+  else if (data.dir === "desc") return { id: data.id };
+  else return { id: data.id, dir: "asc" };
 };

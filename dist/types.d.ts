@@ -29,12 +29,19 @@ export type TableColumn<T = any> = [
   }? // Column Options
 ];
 
+export interface SortData {
+  id?: string;
+  dir?: "asc" | "desc";
+}
+
 export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   cols: Array<TableColumn<T>>;
   data: Array<T>;
-  dataKeyFn?: (item: T) => string;
+  dataKeyFn?: (item: T, index: number) => string;
   headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
   bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
-  rowAttrs?: HTMLAttributes<HTMLTableRowElement>;
+  rowAttrs?: (item: T, index: number) => HTMLAttributes<HTMLTableRowElement>;
   useCardsOnMobile?: boolean;
+  sort?: SortData;
+  onSort?: (data: SortData) => void;
 }

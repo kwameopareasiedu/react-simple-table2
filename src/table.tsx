@@ -19,10 +19,25 @@ export const Tr = styled.tr`
 export const Th = styled.th`
   text-align: left;
   padding: 0.85rem;
+  white-space: nowrap;
 `;
 
 export const Tbody = styled.tbody``;
 
 export const Td = styled.td`
   padding: 0.85rem;
+  vertical-align: top;
+`;
+
+export const ThFlex = styled.div`
+  display: flex;
+  padding: 0.85rem;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.35s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #f9f9f9;
+  }
 `;
