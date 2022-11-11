@@ -7,18 +7,32 @@ export type CellResolverFunction<T = any> = (
 
 export type CellResolver<T = any> = string | CellResolverFunction<T>;
 
+export type ColumnVisibility =
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "xxl"
+  | number;
+
 export type TableColumn<T = any> = [
   string, // Column id
   JSX.Element | string, // Column label
   CellResolver<T>, // Column value resolver
   {
     sortable?: boolean;
-    attrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+    headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+    bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
+    visibility?: ColumnVisibility;
   }? // Column Options
 ];
 
-export interface TableProps<T> extends HTMLAttributes<HTMLTableElement> {
+export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
+  cols: Array<TableColumn<T>>;
   data: Array<T>;
   dataKeyFn?: (item: T) => string;
-  cols: Array<TableColumn<T>>;
+  headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  rowAttrs?: HTMLAttributes<HTMLTableRowElement>;
 }

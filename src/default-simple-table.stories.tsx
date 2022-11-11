@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { DefaultTable } from "./default-table";
+import { DefaultSimpleTable } from "./default-simple-table";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import djs from "dayjs";
 
@@ -111,13 +111,13 @@ const data = [
 ];
 
 export default {
-  title: "Default Table",
-  component: DefaultTable
-} as ComponentMeta<typeof DefaultTable>;
+  title: "Default Simple Table",
+  component: DefaultSimpleTable
+} as ComponentMeta<typeof DefaultSimpleTable>;
 
-export const Default: ComponentStory<typeof DefaultTable> = () => {
+export const Default: ComponentStory<typeof DefaultSimpleTable> = () => {
   return (
-    <DefaultTable
+    <DefaultSimpleTable
       data={data}
       dataKeyFn={item => item?.name || "empty"}
       cols={[
@@ -126,6 +126,33 @@ export const Default: ComponentStory<typeof DefaultTable> = () => {
           "date",
           <i>Created at</i>,
           item => djs(item.created_at).format("Do MMMM YYYY")
+        ],
+        ["nested", "Nested Value", "nested.value"]
+      ]}
+    />
+  );
+};
+
+export const ColumnVisibility: ComponentStory<
+  typeof DefaultSimpleTable
+> = () => {
+  return (
+    <DefaultSimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        [
+          "date",
+          <i>Created at (Medium screens &gt;= 768px)</i>,
+          item => djs(item.created_at).format("Do MMMM YYYY"),
+          { visibility: "md" }
+        ],
+        [
+          "nested",
+          "Nested Value (Large screens >= 992px)",
+          "nested.value",
+          { visibility: "lg" }
         ]
       ]}
     />
