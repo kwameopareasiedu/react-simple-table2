@@ -7,7 +7,11 @@ import {
   resolveCellValue,
   transformColumns
 } from "./utils";
-import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import {
+  TiArrowSortedDown,
+  TiArrowSortedUp,
+  TiArrowUnsorted
+} from "react-icons/ti";
 import styled from "styled-components";
 
 const DefaultSimpleTableRoot = styled(Table)`
@@ -47,19 +51,20 @@ export const DefaultSimpleTable = <T,>({
         <Thead {...headAttrs}>
           <Tr>
             {transformColumns(cols, windowWidth).map(
-              ({ id, label, headerAttrs, headerVisible }) => {
+              ({ id, label, headerAttrs, headerVisible, sortable }) => {
                 if (!headerVisible) {
                   return null;
-                } else if (sort) {
+                } else if (sort && sortable) {
                   return (
                     <Th key={id} style={{ padding: 0 }} {...headerAttrs}>
                       <ThFlex onClick={() => onSort(cycleSortData(sort, id))}>
                         {label}
-                        {sort.id === id && sort.dir === "asc" && (
+                        {sort.id === id && sort.dir === "asc" ? (
                           <TiArrowSortedUp />
-                        )}
-                        {sort.id === id && sort.dir === "desc" && (
+                        ) : sort.id === id && sort.dir === "desc" ? (
                           <TiArrowSortedDown />
+                        ) : (
+                          <TiArrowUnsorted color="#e3e3e3" />
                         )}
                       </ThFlex>
                     </Th>

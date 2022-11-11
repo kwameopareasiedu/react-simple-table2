@@ -1,4 +1,5 @@
-import { resolveCellValue, transformColumns } from "./utils";
+import { cycleSortData, resolveCellValue, transformColumns } from "./utils";
+import { SortData } from "../dist/types";
 import djs from "dayjs";
 
 describe("Utils tests", () => {
@@ -76,5 +77,25 @@ describe("Utils tests", () => {
     expect(cols[0].label).toEqual("Name");
     expect(cols[1].headerVisible).toEqual(true);
     expect(cols[2].headerVisible).toEqual(false);
+  });
+
+  it("should cycle sorting data", () => {
+    let sort: SortData = {};
+
+    sort = cycleSortData(sort, "email");
+    expect(sort.id).toEqual("email");
+    expect(sort.dir).toEqual("asc");
+
+    sort = cycleSortData(sort, "email");
+    expect(sort.id).toEqual("email");
+    expect(sort.dir).toEqual("desc");
+
+    sort = cycleSortData(sort, "email");
+    expect(sort.id).toEqual("email");
+    expect(sort.dir).toBeUndefined();
+
+    sort = cycleSortData(sort, "name");
+    expect(sort.id).toEqual("name");
+    expect(sort.dir).toBe("asc");
   });
 });

@@ -75,16 +75,13 @@ interface TransformedTableColumn {
  */
 export const transformColumns = (
   cols: Array<TableColumn>,
-  windowWidth: number,
-  options: { ignoreVisibility?: boolean } = null
+  windowWidth: number
 ): Array<TransformedTableColumn> => {
-  const { ignoreVisibility } = options || {};
-
   return cols
     .filter(col => {
       const visibility = col[3]?.visibility || "xs";
       const breakpoint = breakpoints[visibility] || 0;
-      return ignoreVisibility || windowWidth > breakpoint;
+      return windowWidth > breakpoint;
     })
     .map(col => {
       const [id, label, resolver, opts] = col;
@@ -97,9 +94,9 @@ export const transformColumns = (
         id,
         label,
         resolver,
-        sortable: opts?.sortable,
-        visible: ignoreVisibility || columnVisible,
-        headerVisible: ignoreVisibility || headerVisible,
+        sortable: opts?.sortable !== undefined ? opts?.sortable : true,
+        visible: columnVisible,
+        headerVisible: headerVisible,
         headerAttrs: opts?.headerAttrs,
         bodyAttrs: opts?.bodyAttrs
       };

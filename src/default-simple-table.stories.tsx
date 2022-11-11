@@ -230,13 +230,12 @@ export const Sorting: ComponentStory<typeof DefaultSimpleTable> = () => {
           "Created at",
           item => djs(item.created_at).format("Do MMMM YYYY")
         ],
-        ["nested", "Nested Value", "nested.value"]
+        ["nested", "Nested Value", "nested.value", { sortable: false }]
       ]}
       sort={sort}
       onSort={onSort}
       rowAttrs={item => ({
-        style: {},
-        onClick: () => logOnRowClick(item)
+        onClick: event => logOnRowClick({ event, item })
       })}
     />
   );
