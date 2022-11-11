@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { SimpleTableProps } from "../dist/types";
-import { TableRoot, Tbody, Td, Th, Thead, Tr } from "./table";
-import { resolveCellValue, transformColumns } from "./utils";
+import { Table, Tbody, Td, Th, Thead, Tr } from "./table";
+import { breakpoints, resolveCellValue, transformColumns } from "./utils";
 import styled from "styled-components";
 
-const DefaultSimpleTableRoot = styled(TableRoot)``;
+const DefaultSimpleTableRoot = styled(Table)`
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px #e3e3e3;
+`;
 
 export const DefaultSimpleTable = <T,>({
   data,
@@ -36,23 +39,57 @@ export const DefaultSimpleTable = <T,>({
 
   return (
     <DefaultSimpleTableRoot {...rest}>
-      <Thead {...headAttrs}>
-        <Tr {...rowAttrs}>
-          {transformColumns(cols, windowWidth).map(
-            ({ id, label, headerAttrs, headerVisible }) => {
-              return (
-                <Th key={id} {...headerAttrs}>
-                  {headerVisible ? label : null}
-                </Th>
-              );
-            }
-          )}
-        </Tr>
-      </Thead>
+      {(windowWidth > breakpoints["md"] || !useCardsOnMobile) && (
+        <Thead {...headAttrs}>
+          <Tr {...rowAttrs}>
+            {transformColumns(cols, windowWidth).map(
+              ({ id, label, headerAttrs, headerVisible }) => {
+                return (
+                  <Th key={id} {...headerAttrs}>
+                    {headerVisible ? label : null}
+                  </Th>
+                );
+              }
+            )}
+          </Tr>
+        </Thead>
+      )}
 
       <Tbody {...bodyAttrs}>
         {data.map((item, itemIdx) => {
           const keyFn = dataKeyFn || (() => itemIdx);
+
+          // On mobile views, use a stacked two-column table
+          if (windowWidth <= breakpoints["md"] && useCardsOnMobile) {
+            return (
+              <Tr key={keyFn(item)} {...rowAttrs}>
+                <Td
+                  colSpan={cols.length}
+                  style={{ padding: 0, borderBottom: "4px solid #f2f2f2" }}>
+                  <Table>
+                    <Tbody>
+                      {transformColumns(cols, windowWidth).map(
+                        ({ label, resolver, bodyAttrs }, colIdx) => {
+                          const cellValue = resolveCellValue(
+                            item,
+                            resolver,
+                            itemIdx
+                          );
+
+                          return (
+                            <Tr key={colIdx} {...bodyAttrs}>
+                              <Td>{label}</Td>
+                              <Td>{cellValue}</Td>
+                            </Tr>
+                          );
+                        }
+                      )}
+                    </Tbody>
+                  </Table>
+                </Td>
+              </Tr>
+            );
+          }
 
           return (
             <Tr key={keyFn(item)} {...rowAttrs}>

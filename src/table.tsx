@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TableRoot = styled.table`
+export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;

@@ -184,3 +184,24 @@ export const ColumnHeaderVisibility: ComponentStory<
     />
   );
 };
+
+export const WithMobileCards: ComponentStory<
+  typeof DefaultSimpleTable
+> = () => {
+  return (
+    <DefaultSimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        [
+          "date",
+          "Created at",
+          item => djs(item.created_at).format("Do MMMM YYYY")
+        ],
+        ["nested", "Nested Value", "nested.value"]
+      ]}
+      useCardsOnMobile
+    />
+  );
+};

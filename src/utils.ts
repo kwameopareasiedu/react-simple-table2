@@ -66,26 +66,31 @@ interface TransformedTableColumn {
 
 export const transformColumns = (
   cols: Array<TableColumn>,
-  windowWidth: number
+  windowWidth: number,
+  options: { ignoreVisibility?: boolean } = null
 ): Array<TransformedTableColumn> => {
+  const { ignoreVisibility } = options || {};
+
   return cols
     .filter(col => {
       const visibility = col[3]?.visibility || "xs";
       const breakpoint = breakpoints[visibility] || 0;
-      return windowWidth > breakpoint;
+      return ignoreVisibility || windowWidth > breakpoint;
     })
     .map(col => {
       const [id, label, resolver, opts] = col;
       const visibility = opts?.visibility || "xs";
+      const columnVisible = windowWidth > (breakpoints[visibility] || 0);
       const headerVisibility = opts?.headerVisibility || "xs";
+      const headerVisible = windowWidth > (breakpoints[headerVisibility] || 0);
 
       return {
         id,
         label,
         resolver,
         sortable: opts?.sortable,
-        visible: windowWidth > (breakpoints[visibility] || 0),
-        headerVisible: windowWidth > (breakpoints[headerVisibility] || 0),
+        visible: ignoreVisibility || columnVisible,
+        headerVisible: ignoreVisibility || headerVisible,
         headerAttrs: opts?.headerAttrs,
         bodyAttrs: opts?.bodyAttrs
       };
