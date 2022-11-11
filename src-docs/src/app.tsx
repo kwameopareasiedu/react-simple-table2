@@ -1,7 +1,16 @@
 import React from "react";
-import { Box, Container, createStyles, Title, Text } from "@mantine/core";
-import styled from "styled-components";
+import {
+  Badge,
+  Box,
+  Container,
+  createStyles,
+  Image,
+  Text,
+  Title
+} from "@mantine/core";
 import { Navbar } from "./components";
+import BannerImg from "./assets/banner.png";
+import { BiErrorAlt, TiWarningOutline } from "react-icons/all";
 
 const useStyles = createStyles(theme => ({
   root: {
@@ -40,7 +49,8 @@ export default function App() {
             <br />
             React Tables In Seconds
           </Title>
-          <Text align="center" italic>
+
+          <Text align="center" italic mb="xl">
             A lot of times, we just want a simple table to display data
             <br />
             Not all the bells, whistles and complexities of a{" "}
@@ -48,6 +58,32 @@ export default function App() {
               data grid
             </Text>
           </Text>
+
+          <Box sx={{ display: "grid", placeItems: "center" }}>
+            <Badge
+              color="red"
+              size="lg"
+              variant="filled"
+              leftSection={<BiErrorAlt />}>
+              <Text sx={{ textTransform: "none" }} weight="normal">
+                Please note:{" "}
+                <Text component="span" weight="bold">
+                  React Simple Table2
+                </Text>{" "}
+                is{" "}
+                <Text component="span" weight="bold">
+                  not
+                </Text>{" "}
+                a data-grid component.
+              </Text>
+            </Badge>
+          </Box>
+        </Container>
+      </Box>
+
+      <Box py="xl">
+        <Container size="md">
+          <Image src={BannerImg}></Image>
         </Container>
       </Box>
     </Box>
