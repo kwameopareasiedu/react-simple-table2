@@ -4,6 +4,7 @@ import App from "./app";
 import { MantineProvider, MantineThemeOverride } from "@mantine/core";
 
 const theme: MantineThemeOverride = {
+  // primaryColor: "",
   fontFamily: "'Source Sans Pro', sans-serif"
 };
 

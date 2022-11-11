@@ -6,13 +6,22 @@ import {
   Code,
   Container,
   createStyles,
+  Grid,
   Image,
   Text,
   Title
 } from "@mantine/core";
 import { Navbar } from "./components";
 import BannerImg from "./assets/banner.png";
-import { BiErrorAlt } from "react-icons/all";
+import {
+  BiErrorAlt,
+  BiSortAZ,
+  FaMobileAlt,
+  HiOutlineTableCells,
+  TbCode,
+  TbComponents
+} from "react-icons/all";
+import { Feature } from "./components/feature";
 
 const useStyles = createStyles(theme => ({
   root: {
@@ -137,6 +146,64 @@ export default function App() {
       <Box id="features" py="5rem">
         <Container size="md">
           <Title mb="xl">Features</Title>
+
+          <Grid justify="center" gutter="xl">
+            <Grid.Col xs={12} md={4}>
+              <Feature label="Responsive" icon={<FaMobileAlt size="1.5rem" />}>
+                <Text>
+                  Display rows as cards or use column visibility to hide columns
+                  on smaller screens. You can also just hide column headings.
+                </Text>
+              </Feature>
+            </Grid.Col>
+
+            <Grid.Col xs={12} md={4}>
+              <Feature label="Clean Semantics" icon={<TbCode size="1.5rem" />}>
+                <Text>
+                  <Text component="span" weight="bold">
+                    React Simple Table2
+                  </Text>{" "}
+                  outputs appropriate HTML semantic tags making it easier for
+                  accessibility, search engine and custom styling.
+                </Text>
+              </Feature>
+            </Grid.Col>
+
+            <Grid.Col xs={12} md={4}>
+              <Feature
+                label="Powerful Cell Rendering"
+                icon={<HiOutlineTableCells size="1.5rem" />}>
+                <Text>
+                  Use plain strings or dot-notated strings to access properties
+                  from data objects or use functions to return custom values or
+                  components.
+                </Text>
+              </Feature>
+            </Grid.Col>
+
+            <Grid.Col xs={12} md={4}>
+              <Feature label="Sortable" icon={<BiSortAZ size="1.5rem" />}>
+                <Text>
+                  Use <Code>sort</Code> and <Code>onSort()</Code> to change the
+                  way your data is displayed in{" "}
+                  <Text component="span" weight="bold">
+                    React Simple Table2
+                  </Text>
+                  .
+                </Text>
+              </Feature>
+            </Grid.Col>
+
+            <Grid.Col xs={12} md={4}>
+              <Feature label="Composable" icon={<TbComponents size="1.5rem" />}>
+                <Text>
+                  Don&apos;t like the <Code>&lt;SimpleTable/&gt;</Code>, use the
+                  various utility functions provided to build your own custom
+                  table.
+                </Text>
+              </Feature>
+            </Grid.Col>
+          </Grid>
         </Container>
       </Box>
     </Box>
