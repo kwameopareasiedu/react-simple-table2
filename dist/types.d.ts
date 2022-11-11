@@ -25,6 +25,7 @@ export type TableColumn<T = any> = [
     headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
     bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
     visibility?: ColumnVisibility;
+    headerVisibility?: ColumnVisibility;
   }? // Column Options
 ];
 

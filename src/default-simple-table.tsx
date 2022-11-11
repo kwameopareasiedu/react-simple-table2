@@ -42,10 +42,12 @@ export const DefaultSimpleTable = <T,>({
             .map(col => {
               const [id, label, , opts] = col;
               const attrs = opts?.headerAttrs || {};
+              const headerVisibility = col[3]?.headerVisibility || "xs";
+              const breakpoint = breakpoints[headerVisibility] || 0;
 
               return (
                 <Th key={id} {...attrs}>
-                  {label}
+                  {windowWidth > breakpoint ? label : null}
                 </Th>
               );
             })}

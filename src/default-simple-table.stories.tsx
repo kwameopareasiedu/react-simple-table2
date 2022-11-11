@@ -158,3 +158,29 @@ export const ColumnVisibility: ComponentStory<
     />
   );
 };
+
+export const ColumnHeaderVisibility: ComponentStory<
+  typeof DefaultSimpleTable
+> = () => {
+  return (
+    <DefaultSimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        [
+          "date",
+          <i>Created at (Medium screens &gt;= 768px)</i>,
+          item => djs(item.created_at).format("Do MMMM YYYY"),
+          { headerVisibility: "md" }
+        ],
+        [
+          "nested",
+          "Nested Value (Large screens >= 992px)",
+          "nested.value",
+          { headerVisibility: "lg" }
+        ]
+      ]}
+    />
+  );
+};
