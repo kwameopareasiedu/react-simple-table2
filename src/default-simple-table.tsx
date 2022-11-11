@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SimpleTableProps } from "../dist/types";
 import { TableRoot, Tbody, Td, Th, Thead, Tr } from "./table";
-import { breakpoints, resolveCellValue } from "./utils";
+import { resolveCellValue, transformColumns } from "./utils";
 import styled from "styled-components";
 
 const DefaultSimpleTableRoot = styled(TableRoot)``;
@@ -13,6 +13,7 @@ export const DefaultSimpleTable = <T,>({
   headAttrs: _headAttrs,
   bodyAttrs: _bodyAttrs,
   rowAttrs: _rowAttrs,
+  useCardsOnMobile,
   ...rest
 }: SimpleTableProps<T>): JSX.Element => {
   const headAttrs = _headAttrs || {};
@@ -37,24 +38,15 @@ export const DefaultSimpleTable = <T,>({
     <DefaultSimpleTableRoot {...rest}>
       <Thead {...headAttrs}>
         <Tr {...rowAttrs}>
-          {cols
-            .filter(col => {
-              const visibility = col[3]?.visibility || "xs";
-              const breakpoint = breakpoints[visibility] || 0;
-              return windowWidth > breakpoint;
-            })
-            .map(col => {
-              const [id, label, , opts] = col;
-              const attrs = opts?.headerAttrs || {};
-              const headerVisibility = col[3]?.headerVisibility || "xs";
-              const breakpoint = breakpoints[headerVisibility] || 0;
-
+          {transformColumns(cols, windowWidth).map(
+            ({ id, label, headerAttrs, headerVisible }) => {
               return (
-                <Th key={id} {...attrs}>
-                  {windowWidth > breakpoint ? label : null}
+                <Th key={id} {...headerAttrs}>
+                  {headerVisible ? label : null}
                 </Th>
               );
-            })}
+            }
+          )}
         </Tr>
       </Thead>
 
@@ -64,23 +56,17 @@ export const DefaultSimpleTable = <T,>({
 
           return (
             <Tr key={keyFn(item)} {...rowAttrs}>
-              {cols
-                .filter(col => {
-                  const visibility = col[3]?.visibility || "xs";
-                  const breakpoint = breakpoints[visibility] || 0;
-                  return windowWidth > breakpoint;
-                })
-                .map((col, colIdx) => {
-                  const resolver = col[2];
-                  const attrs = col[3]?.bodyAttrs || {};
+              {transformColumns(cols, windowWidth).map(
+                ({ resolver, bodyAttrs }, colIdx) => {
                   const cellValue = resolveCellValue(item, resolver, itemIdx);
 
                   return (
-                    <Td key={colIdx} {...attrs}>
+                    <Td key={colIdx} {...bodyAttrs}>
                       {cellValue}
                     </Td>
                   );
-                })}
+                }
+              )}
             </Tr>
           );
         })}

@@ -36,4 +36,5 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
   bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
   rowAttrs?: HTMLAttributes<HTMLTableRowElement>;
+  useCardsOnMobile?: boolean;
 }

@@ -1,6 +1,17 @@
-import { CellResolver, CellResolverFunction } from "../dist/types";
+import { HTMLAttributes } from "react";
+import { CellResolver, CellResolverFunction, TableColumn } from "../dist/types";
 
 const EMPTY_STRING = "";
+
+/** Mapping of breakpoint values to min window widths */
+export const breakpoints = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400
+};
 
 /**
  * Obtains the property of an item using a `resolver.
@@ -42,11 +53,41 @@ export const resolveCellValue = (
   } else return null;
 };
 
-export const breakpoints = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1400
+interface TransformedTableColumn {
+  id: string;
+  label: string | JSX.Element;
+  resolver: CellResolver;
+  sortable?: boolean;
+  visible: boolean;
+  headerVisible: boolean;
+  headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+  bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
+}
+
+export const transformColumns = (
+  cols: Array<TableColumn>,
+  windowWidth: number
+): Array<TransformedTableColumn> => {
+  return cols
+    .filter(col => {
+      const visibility = col[3]?.visibility || "xs";
+      const breakpoint = breakpoints[visibility] || 0;
+      return windowWidth > breakpoint;
+    })
+    .map(col => {
+      const [id, label, resolver, opts] = col;
+      const visibility = opts?.visibility || "xs";
+      const headerVisibility = opts?.headerVisibility || "xs";
+
+      return {
+        id,
+        label,
+        resolver,
+        sortable: opts?.sortable,
+        visible: windowWidth > (breakpoints[visibility] || 0),
+        headerVisible: windowWidth > (breakpoints[headerVisibility] || 0),
+        headerAttrs: opts?.headerAttrs,
+        bodyAttrs: opts?.bodyAttrs
+      };
+    });
 };
