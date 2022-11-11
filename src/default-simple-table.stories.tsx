@@ -206,7 +206,7 @@ export const WithMobileCards: ComponentStory<
         ],
         ["nested", "Nested Value", "nested.value"]
       ]}
-      useCardsOnMobile
+      mobileCards
     />
   );
 };
@@ -232,11 +232,37 @@ export const Sorting: ComponentStory<typeof DefaultSimpleTable> = () => {
         ],
         ["nested", "Nested Value", "nested.value", { sortable: false }]
       ]}
-      sort={sort}
-      onSort={onSort}
-      rowAttrs={item => ({
+      rowAttrsBuilder={item => ({
         onClick: event => logOnRowClick({ event, item })
       })}
+      sort={sort}
+      onSort={onSort}
+    />
+  );
+};
+
+export const Loading: ComponentStory<typeof DefaultSimpleTable> = () => {
+  const [sort, setSort] = useState<SortData>({ id: "name", dir: "asc" });
+
+  const onSort = (data: SortData) => {
+    setSort(data);
+    logOnSort(data);
+  };
+
+  return (
+    <DefaultSimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        [
+          "date",
+          "Created at",
+          item => djs(item.created_at).format("Do MMMM YYYY")
+        ],
+        ["nested", "Nested Value", "nested.value", { sortable: false }]
+      ]}
+      loading
     />
   );
 };

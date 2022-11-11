@@ -40,8 +40,9 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   dataKeyFn?: (item: T, index: number) => string;
   headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
   bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
-  rowAttrs?: (item: T, index: number) => HTMLAttributes<HTMLTableRowElement>;
-  useCardsOnMobile?: boolean;
+  rowAttrsBuilder?: (item: T, index: number) => HTMLAttributes<HTMLTableRowElement>;
+  mobileCards?: boolean;
   sort?: SortData;
   onSort?: (data: SortData) => void;
+  loading?: boolean;
 }

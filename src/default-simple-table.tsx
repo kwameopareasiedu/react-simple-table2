@@ -13,6 +13,7 @@ import {
   TiArrowUnsorted
 } from "react-icons/ti";
 import styled from "styled-components";
+import { LinearProgress } from "./linear-progress";
 
 const DefaultSimpleTableRoot = styled(Table)`
   border-radius: 8px;
@@ -25,8 +26,9 @@ export const DefaultSimpleTable = <T,>({
   dataKeyFn,
   headAttrs,
   bodyAttrs,
-  rowAttrs: rowAttrsBuilder,
-  useCardsOnMobile,
+  rowAttrsBuilder,
+  mobileCards,
+  loading,
   sort,
   onSort,
   ...rest
@@ -47,7 +49,7 @@ export const DefaultSimpleTable = <T,>({
 
   return (
     <DefaultSimpleTableRoot {...rest}>
-      {(windowWidth > breakpoints["md"] || !useCardsOnMobile) && (
+      {(windowWidth > breakpoints["md"] || !mobileCards) && (
         <Thead {...headAttrs}>
           <Tr>
             {transformColumns(cols, windowWidth).map(
@@ -83,12 +85,20 @@ export const DefaultSimpleTable = <T,>({
       )}
 
       <Tbody {...bodyAttrs}>
+        {loading && (
+          <Tr style={{ border: "none" }}>
+            <Td colSpan={cols.length} style={{ padding: 0 }}>
+              <LinearProgress />
+            </Td>
+          </Tr>
+        )}
+
         {data.map((item, itemIdx) => {
           const keyFn = dataKeyFn || (() => itemIdx);
           const rowAttrs = rowAttrsBuilder?.(item, itemIdx);
 
           // On mobile views, use a stacked two-column table
-          if (windowWidth <= breakpoints["md"] && useCardsOnMobile) {
+          if (windowWidth <= breakpoints["md"] && mobileCards) {
             return (
               <Tr key={keyFn(item, itemIdx)} {...rowAttrs}>
                 <Td
