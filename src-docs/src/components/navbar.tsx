@@ -11,7 +11,6 @@ import {
   Drawer,
   Flex,
   Group,
-  Space,
   Stack,
   Text,
   Title,
@@ -21,6 +20,15 @@ import { DiGithubAlt } from "react-icons/all";
 import KwameImg from "../assets/kwame.jpg";
 
 const useStyles = createStyles(theme => ({
+  root: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    zIndex: 10,
+    boxShadow: "2px 2px 10px #e3e3e3",
+    backgroundColor: "white"
+  },
   burger: {
     display: "block",
     [theme.fn.largerThan("md")]: {
@@ -54,7 +62,7 @@ export const Navbar = (): JSX.Element => {
   const [opened, setOpened] = useState(false);
 
   return (
-    <Box py="sm">
+    <Box className={classes.root} py="sm">
       <Container size="lg">
         <Flex justify="space-between" align="center">
           <Burger
