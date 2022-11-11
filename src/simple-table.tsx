@@ -15,12 +15,12 @@ import {
 import styled from "styled-components";
 import { LinearProgress } from "./linear-progress";
 
-const DefaultSimpleTableRoot = styled(Table)`
+const SimpleTableRoot = styled(Table)`
   border-radius: 8px;
   box-shadow: 2px 2px 10px #e3e3e3;
 `;
 
-export const DefaultSimpleTable = <T,>({
+export const SimpleTable = <T,>({
   data,
   cols,
   dataKeyFn,
@@ -48,7 +48,7 @@ export const DefaultSimpleTable = <T,>({
   }, []);
 
   return (
-    <DefaultSimpleTableRoot {...rest}>
+    <SimpleTableRoot {...rest}>
       {(windowWidth > breakpoints["md"] || !mobileCards) && (
         <Thead {...headAttrs}>
           <Tr>
@@ -146,6 +146,6 @@ export const DefaultSimpleTable = <T,>({
           );
         })}
       </Tbody>
-    </DefaultSimpleTableRoot>
+    </SimpleTableRoot>
   );
 };
