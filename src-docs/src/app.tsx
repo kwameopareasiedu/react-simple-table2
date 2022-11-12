@@ -40,7 +40,8 @@ const useStyles = createStyles(theme => ({
   },
   table: {
     boxShadow: "2px 2px 10px #e3e3e3",
-    borderRadius: "4px"
+    borderRadius: "4px",
+    overflow: "auto"
   }
 }));
 
@@ -242,24 +243,26 @@ export default function App() {
             Table2. You can play around with the example and resize the preview
             window on the right to see how it appears on different screen sizes.
           </Text>
+        </Container>
 
-          <Box mb="xl">
-            <iframe
-              title="React Simple Table2"
-              src="https://codesandbox.io/embed/react-simple-table2-l067l3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp.tsx&theme=dark"
-              style={{
-                width: "100%",
-                height: "500px",
-                border: 0,
-                borderRadius: "4px",
-                overflow: "hidden"
-              }}
-              allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-              sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-            />
-          </Box>
+        <Box mb="xl">
+          <iframe
+            title="React Simple Table2"
+            src="https://codesandbox.io/embed/react-simple-table2-l067l3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp.tsx&theme=dark"
+            style={{
+              width: "100%",
+              height: "500px",
+              border: 0,
+              borderRadius: "4px",
+              overflow: "hidden"
+            }}
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+          />
+        </Box>
 
-          <Title order={3}>All SimpleTable Options</Title>
+        <Container size="md">
+          <Title order={3}>All SimpleTable Props</Title>
           <Text mb="md">
             The table below 😉 describes all the properties of the{" "}
             <Code>&lt;SimpleTable/&gt;</Code> component.
@@ -437,34 +440,64 @@ export default function App() {
             below:
           </Text>
 
-          <List mb="md">
+          <List type="ordered" mb="md">
             <List.Item>Column id</List.Item>
             <List.Item>Column header</List.Item>
             <List.Item>Column value resolver</List.Item>
             <List.Item>Optional column property object</List.Item>
           </List>
 
-          <Text>
+          <Text mb="md">
             An example taken from the above sandbox is{" "}
             <Code>
               [ &quot;email&quot;, &quot;Email&quot;, &quot;contact.email&quot;,
               &#123; visibility: &quot;md&quot; &#125; ]
             </Code>
-            .
+            . This means our column:
           </Text>
 
-          <Text mb="md">
-            This means our column has an id of &quot;email&quot;, a column
-            header of &quot;Email&quot;, a value resolver of
-            &quot;contact.email&quot; and a is visible on medium or larger
-            screens.
-          </Text>
+          <List type="ordered" mb="md">
+            <List.Item>
+              Has an{" "}
+              <Text component="span" weight="bold">
+                id
+              </Text>{" "}
+              of{" "}
+              <Text component="span" italic>
+                &quot;email&quot;
+              </Text>
+            </List.Item>
+            <List.Item>
+              Has a{" "}
+              <Text component="span" weight="bold">
+                header text
+              </Text>{" "}
+              of{" "}
+              <Text component="span" italic>
+                &quot;Email&quot;
+              </Text>
+            </List.Item>
+            <List.Item>
+              Has an{" "}
+              <Text component="span" weight="bold">
+                value resolver
+              </Text>{" "}
+              of <Code>&quot;contact.email&quot;</Code> (More on this later)
+            </List.Item>
+            <List.Item>
+              Is visible on{" "}
+              <Text component="span" italic>
+                medium screens and larger
+              </Text>
+            </List.Item>
+          </List>
 
-          <Box mb="xl" sx={{ overflow: "hidden" }}>
-            <Table className={classes.table}>
+          <Box mb="xl" className={classes.table}>
+            <Table>
               <Thead>
                 <Tr>
                   <Th>Property</Th>
+                  <Th>Index</Th>
                   <Th>Required</Th>
                   <Th>Description</Th>
                 </Tr>
@@ -475,6 +508,7 @@ export default function App() {
                   <Td>
                     <Code>id</Code>
                   </Td>
+                  <Td>0</Td>
                   <Td>
                     <Badge color="red">Yes</Badge>
                   </Td>
@@ -489,6 +523,7 @@ export default function App() {
                   <Td>
                     <Code>header</Code>
                   </Td>
+                  <Td>1</Td>
                   <Td>
                     <Badge color="red">Yes</Badge>
                   </Td>
@@ -504,6 +539,7 @@ export default function App() {
                   <Td>
                     <Code>valueResolver</Code>
                   </Td>
+                  <Td>2</Td>
                   <Td>
                     <Badge color="red">Yes</Badge>
                   </Td>
@@ -514,7 +550,7 @@ export default function App() {
                       following ways:
                     </Text>
 
-                    <List>
+                    <List type="ordered">
                       <List.Item>
                         <Text>
                           <Text component="span" weight="bold">
@@ -555,6 +591,7 @@ export default function App() {
                   <Td>
                     <Code>additionalProperties</Code>
                   </Td>
+                  <Td>3</Td>
                   <Td>
                     <Badge color="green">No</Badge>
                   </Td>
@@ -658,7 +695,8 @@ export default function App() {
                       </Text>{" "}
                       is visible. It can take values of <Code>xs</Code>,{" "}
                       <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code>,{" "}
-                      <Code>xl</Code> or a number
+                      <Code>xl</Code> or a number. (Not to be confused with{" "}
+                      <Code>visibility</Code>)
                     </Text>
                   </Td>
                 </Tr>

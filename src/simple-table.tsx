@@ -15,10 +15,7 @@ import {
 import styled from "styled-components";
 import { LinearProgress } from "./linear-progress";
 
-const SimpleTableRoot = styled(Table)`
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px #e3e3e3;
-`;
+const SimpleTableRoot = styled(Table)``;
 
 export const SimpleTable = <T,>({
   data,
@@ -55,7 +52,7 @@ export const SimpleTable = <T,>({
             {transformColumns(cols, windowWidth).map(
               ({ id, label, headerAttrs, headerVisible, sortable }) => {
                 if (!headerVisible) {
-                  return null;
+                  return <Th key={id} {...headerAttrs} />;
                 } else if (sort && sortable) {
                   return (
                     <Th key={id} style={{ padding: 0 }} {...headerAttrs}>

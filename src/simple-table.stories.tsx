@@ -167,13 +167,6 @@ export const Sorting: ComponentStory<typeof SimpleTable> = () => {
 };
 
 export const Loading: ComponentStory<typeof SimpleTable> = () => {
-  const [sort, setSort] = useState<SortData>({ id: "name", dir: "asc" });
-
-  const onSort = (data: SortData) => {
-    setSort(data);
-    logOnSort(data);
-  };
-
   return (
     <SimpleTable
       data={data}

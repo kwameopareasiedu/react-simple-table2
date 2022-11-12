@@ -1,9 +1,9 @@
-import { HTMLAttributes } from "react";
+import React, { HTMLAttributes, ReactNode } from "react";
 
 export type CellResolverFunction<T = any> = (
   item: T,
   itemIndex?: number
-) => JSX.Element | string;
+) => ReactNode;
 
 export type CellResolver<T = any> = string | CellResolverFunction<T>;
 
@@ -18,7 +18,7 @@ export type ColumnVisibility =
 
 export type TableColumn<T = any> = [
   string, // Column id
-  JSX.Element | string, // Column label
+  ReactNode, // Column label
   CellResolver<T>, // Column value resolver
   {
     sortable?: boolean;
@@ -28,6 +28,17 @@ export type TableColumn<T = any> = [
     headerVisibility?: ColumnVisibility;
   }? // Column Options
 ];
+
+export interface TransformedTableColumn {
+  id: string;
+  label: ReactNode;
+  resolver: CellResolver;
+  sortable?: boolean;
+  visible: boolean;
+  headerVisible: boolean;
+  headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+  bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
+}
 
 export interface SortData {
   id?: string;
@@ -50,13 +61,11 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   loading?: boolean;
 }
 
-export interface TransformedTableColumn {
-  id: string;
-  label: string | JSX.Element;
-  resolver: CellResolver;
-  sortable?: boolean;
-  visible: boolean;
-  headerVisible: boolean;
-  headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
-  bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
+export interface ObjectTableProps<T> extends HTMLAttributes<HTMLTableElement> {
+  data: T;
+  props: Array<[ReactNode, CellResolver<T>]>;
+  bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  rowAttrs?: HTMLAttributes<HTMLTableRowElement>;
+  tdAttrs?: HTMLAttributes<HTMLTableCellElement>;
+  split?: number;
 }
