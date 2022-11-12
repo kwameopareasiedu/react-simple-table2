@@ -3,7 +3,6 @@ import {
   Box,
   Card,
   CardProps,
-  createStyles,
   Stack,
   Title,
   useMantineTheme
@@ -14,8 +13,6 @@ interface FeatureProps extends CardProps {
   icon: React.ReactNode;
 }
 
-const useStyles = createStyles(theme => ({}));
-
 export const Feature = ({
   icon,
   label,
@@ -23,7 +20,6 @@ export const Feature = ({
   ...rest
 }: FeatureProps): JSX.Element => {
   const theme = useMantineTheme();
-  const { classes } = useStyles();
 
   return (
     <Card shadow="xl" {...rest}>
