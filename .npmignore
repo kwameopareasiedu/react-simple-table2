@@ -4,6 +4,7 @@
 .sass-cache
 node_modules
 src-docs
+docs
 *.iml
 *.tgz
 *.ini
