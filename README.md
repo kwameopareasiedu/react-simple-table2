@@ -1,6 +1,6 @@
 # React Simple Table2
 
-![](https://img.shields.io/badge/version-1.0.0--test-blue) ![](https://img.shields.io/badge/react-v18.2.0-blue) [![](https://img.shields.io/badge/github-star-lightgrey)](https://github.com/kwameopareasiedu/react-simple-table2)
+![](https://img.shields.io/badge/version-1.0.0-blue) ![](https://img.shields.io/badge/react-v18.2.0-blue) [![](https://img.shields.io/badge/github-star-lightgrey)](https://github.com/kwameopareasiedu/react-simple-table2)
 
 A clean, composable, mobile-friendly table library for React
 
