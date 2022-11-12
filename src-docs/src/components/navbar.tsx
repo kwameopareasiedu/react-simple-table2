@@ -83,7 +83,12 @@ export const Navbar = (): JSX.Element => {
           />
 
           <Group className={classes.links} spacing="sm">
-            <Button component="a" href="/" size="md" p="xs" variant="subtle">
+            <Button
+              component="a"
+              href="#home"
+              size="md"
+              p="xs"
+              variant="subtle">
               Home
             </Button>
 
@@ -180,7 +185,7 @@ export const Navbar = (): JSX.Element => {
         <Stack>
           <Button
             component="a"
-            href="/"
+            href="#home"
             variant="outline"
             onClick={() => setOpened(false)}>
             Home
