@@ -21,6 +21,7 @@ import {
   TbCode,
   TbComponents
 } from "react-icons/all";
+import { Table, Tbody, Td, Th, Thead, Tr } from "react-simple-table2";
 
 const useStyles = createStyles(theme => ({
   root: {
@@ -32,7 +33,10 @@ const useStyles = createStyles(theme => ({
       fontSize: "4.5rem"
     }
   },
-  section: {}
+  table: {
+    boxShadow: "2px 2px 10px #e3e3e3",
+    borderRadius: "4px"
+  }
 }));
 
 export default function App() {
@@ -227,18 +231,191 @@ export default function App() {
             yarn add react styled-components react-simple-table2
           </Code>
 
-          {/*<iframe*/}
-          {/*  src="https://codesandbox.io/embed/new?codemirror=1"*/}
-          {/*  // style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"*/}
-          {/*  style={{*/}
-          {/*    width: "100%",*/}
-          {/*    height: "500px",*/}
-          {/*    border: 0,*/}
-          {/*    borderRadius: "4px",*/}
-          {/*    overflow: "hidden"*/}
-          {/*  }}*/}
-          {/*  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"*/}
-          {/*  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>*/}
+          <Title order={3}>Usage</Title>
+          <Text mb="md">
+            The following CodeSandbox illustrates how to use React Simple Table2
+          </Text>
+
+          <Box mb="xl">
+            <iframe
+              title="React Simple Table2"
+              src="https://codesandbox.io/embed/react-simple-table2-l067l3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp.tsx&theme=dark"
+              style={{
+                width: "100%",
+                height: "500px",
+                border: 0,
+                borderRadius: "4px",
+                overflow: "hidden"
+              }}
+              allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+              sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+            />
+          </Box>
+
+          <Title order={3}>All SimpleTable Options</Title>
+          <Text mb="md">
+            The table below 😉 describes all the properties of the{" "}
+            <Code>&lt;SimpleTable/&gt;</Code> component.
+          </Text>
+
+          <Table className={classes.table}>
+            <Thead>
+              <Tr>
+                <Th>Property</Th>
+                <Th>Required</Th>
+                <Th>Description</Th>
+              </Tr>
+            </Thead>
+
+            <Tbody>
+              <Tr>
+                <Td>
+                  <Code>data</Code>
+                </Td>
+                <Td>
+                  <Badge color="red">Yes</Badge>
+                </Td>
+                <Td>
+                  <Text>The array of items to be displayed in the table</Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>cols</Code>
+                </Td>
+                <Td>
+                  <Badge color="red">Yes</Badge>
+                </Td>
+                <Td>
+                  <Text>The array of column definitions</Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>dataKeyFn</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    A function which is called for every item in{" "}
+                    <Code>data</Code>. It should return the React key of the
+                    item
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>headerAttrs</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    The HTML props to assign to the table <Code>thead</Code>{" "}
+                    component
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>bodyAttrs</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    The HTML props to assign to the table <Code>tbody</Code>{" "}
+                    component
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>rowAttrsBuilder</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    A function which is called for every <Code>tr</Code>{" "}
+                    component. This should return the HTML props to assign to
+                    each <Code>tbody</Code> <Code>tr</Code> component
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>mobileCards</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    If true, each item is displayed using a card on small
+                    screens
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>sort</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    The sorting data object. Contains the <Code>id</Code> of the
+                    sorted column and the <Code>dir</Code> sorting direction
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>onSort</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    A function which is called when a column is sorted. It is
+                    called with the new <Code>sort</Code> object
+                  </Text>
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Code>loading</Code>
+                </Td>
+                <Td>
+                  <Badge color="green">No</Badge>
+                </Td>
+                <Td>
+                  <Text>
+                    If true, the <Code>SimpleTable</Code> displays an
+                    indeterminate linear progress bar right under the{" "}
+                    <Code>thead</Code> component
+                  </Text>
+                </Td>
+              </Tr>
+            </Tbody>
+          </Table>
         </Container>
       </Box>
 

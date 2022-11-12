@@ -25,6 +25,7 @@ export const Th = styled.th`
 export const Tbody = styled.tbody``;
 
 export const Td = styled.td`
+  text-align: left;
   padding: 0.85rem;
   vertical-align: top;
 `;

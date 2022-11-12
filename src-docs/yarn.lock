@@ -2130,6 +2130,15 @@ react-refresh@^0.14.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
+react-simple-table2@^1.0.0-test-0:
+  version "1.0.0-test-0"
+  resolved "https://registry.yarnpkg.com/react-simple-table2/-/react-simple-table2-1.0.0-test-0.tgz#65837f66b3ec3c1d29334c4cc7b4281ad29defe3"
+  integrity sha512-7zbLJJLaWvT1tuT0mFXM5dt4c1cj53mjYmJ7nTDCxzTPzZsSjoNNzw1qJYCQF3BMms8wo5s2edZmlSXmGHuI0g==
+  dependencies:
+    react "^18.2.0"
+    react-icons "^4.6.0"
+    styled-components "^5.3.6"
+
 react-textarea-autosize@8.3.4:
   version "8.3.4"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.3.4.tgz#270a343de7ad350534141b02c9cb78903e553524"
