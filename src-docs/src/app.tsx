@@ -2,11 +2,14 @@ import React from "react";
 import {
   Badge,
   Box,
+  Button,
   Card,
+  Center,
   Code,
   Container,
   createStyles,
   Grid,
+  Group,
   Image,
   List,
   Text,
@@ -17,6 +20,7 @@ import BannerImg from "./assets/banner.png";
 import {
   BiErrorAlt,
   BiSortAZ,
+  BsGithub,
   FaMobileAlt,
   HiOutlineTableCells,
   TbCode,
@@ -113,7 +117,7 @@ export default function App() {
               A lot of React &quot;table&quot; implementations function more or
               less like a data-grid spreadsheet-like components with several
               features like editing, reordering rows and columns, in-table
-              filtering, grouping and so much more. Don&apos;t get us wrong.
+              filtering, grouping and so much more. Don&apos;t get me wrong.
               This isn&apos;t a bad thing. Data grids are feature-rich for the
               reasons they exist.
             </Text>
@@ -232,9 +236,11 @@ export default function App() {
             yarn add react styled-components react-simple-table2
           </Code>
 
-          <Title order={3}>Usage</Title>
+          <Title order={3}>Example Usage</Title>
           <Text mb="md">
-            The following CodeSandbox illustrates how to use React Simple Table2
+            The following CodeSandbox illustrates how to use React Simple
+            Table2. You can play around with the example and resize the preview
+            window on the right to see how it appears on different screen sizes.
           </Text>
 
           <Box mb="xl">
@@ -423,7 +429,12 @@ export default function App() {
 
           <Title order={3}>Column Definition</Title>
           <Text mb="md">
-            A column is defined with an 4-element array defined below:
+            A column is a{" "}
+            <Text component="span" weight="bold">
+              3 or 4 element array
+            </Text>
+            . The 4th array element is optional. The array elements are defined
+            below:
           </Text>
 
           <List mb="md">
@@ -433,19 +444,23 @@ export default function App() {
             <List.Item>Optional column property object</List.Item>
           </List>
 
-          <Text mb="md">
+          <Text>
             An example taken from the above sandbox is{" "}
             <Code>
               [ &quot;email&quot;, &quot;Email&quot;, &quot;contact.email&quot;,
               &#123; visibility: &quot;md&quot; &#125; ]
             </Code>
-            . This means our column has an <Code>id</Code> of &quot;email&quot;,
-            a column header of &quot;Email&quot;, a value resolver of
-            &quot;contact.email&quot; and a is visible on medium screens
-            upwards.
+            .
           </Text>
 
-          <Box mb="xl">
+          <Text mb="md">
+            This means our column has an id of &quot;email&quot;, a column
+            header of &quot;Email&quot;, a value resolver of
+            &quot;contact.email&quot; and a is visible on medium or larger
+            screens.
+          </Text>
+
+          <Box mb="xl" sx={{ overflow: "hidden" }}>
             <Table className={classes.table}>
               <Thead>
                 <Tr>
@@ -554,8 +569,8 @@ export default function App() {
           </Box>
 
           <Text mb="md">
-            The <Code>additionalProperties</Code> of a column are described
-            below:
+            The <Code>additionalProperties</Code> (I.e. the 4th optional
+            element) of a column are described below:
           </Text>
 
           <Box mb="xl">
@@ -650,16 +665,48 @@ export default function App() {
               </Tbody>
             </Table>
           </Box>
+        </Container>
+      </Box>
 
-          {/*<Code block>*/}
-          {/*  [<br />*/}
-          {/*  &nbsp;&nbsp;string // Column id <br />*/}
-          {/*  &nbsp;&nbsp;string | JSX.Element // Column header <br />*/}
-          {/*  &nbsp;&nbsp;string | (item, itemIndex) =&gt; any // Column value*/}
-          {/*  resolver <br />*/}
-          {/*  &nbsp;&nbsp;string | (item, itemIndex) =&gt; any // Column value{" "}*/}
-          {/*  <br />]*/}
-          {/*</Code>*/}
+      <Box id="support" py="5rem">
+        <Container>
+          <Title>Supporting</Title>
+          <Text mb="xl">
+            Thanks for checking out the{" "}
+            <Text component="span" weight="bold">
+              React Simple Table2
+            </Text>{" "}
+            project. Simple tables in React doesn&apos;t need to be rocket
+            science and we hope this project provides that. If you like what we
+            are doing here, you can help by leaving a star on the GitHub project
+            and talking about it as much as possible.
+          </Text>
+
+          <Card shadow="xl" py="5rem">
+            <Center>
+              <Group>
+                <Button
+                  component="a"
+                  variant="light"
+                  leftIcon={<BsGithub />}
+                  href="https://github.com/kwameopareasiedu/react-simple-table2"
+                  target="_blank"
+                  size="xl">
+                  Star On GitHub
+                </Button>
+
+                <Button
+                  component="a"
+                  variant="outline"
+                  leftIcon={<BsGithub />}
+                  href="https://github.com/kwameopareasiedu"
+                  target="_blank"
+                  size="xl">
+                  Follow Me On GitHub
+                </Button>
+              </Group>
+            </Center>
+          </Card>
         </Container>
       </Box>
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   ActionIcon,
   Avatar,
+  Badge,
   Box,
   Burger,
   Button,
@@ -16,7 +17,7 @@ import {
   Title,
   useMantineTheme
 } from "@mantine/core";
-import { DiGithubAlt } from "react-icons/all";
+import { BsGithub } from "react-icons/all";
 import KwameImg from "../assets/kwame.jpg";
 
 const useStyles = createStyles(theme => ({
@@ -52,6 +53,15 @@ const useStyles = createStyles(theme => ({
     ".mantine-Drawer-drawer": {
       display: "flex",
       flexDirection: "column"
+    }
+  },
+  author: {
+    display: "none",
+    "&:hover": {
+      cursor: "pointer"
+    },
+    [theme.fn.largerThan("md")]: {
+      display: "flex"
     }
   }
 }));
@@ -94,6 +104,15 @@ export const Navbar = (): JSX.Element => {
               variant="subtle">
               Usage
             </Button>
+
+            <Button
+              component="a"
+              href="#support"
+              size="md"
+              p="xs"
+              variant="subtle">
+              Support
+            </Button>
           </Group>
 
           <Text size="xl" weight="bold">
@@ -101,13 +120,35 @@ export const Navbar = (): JSX.Element => {
           </Text>
 
           <Group className={classes.social}>
+            <Badge
+              component="a"
+              className={classes.author}
+              href="https://github.com/kwameopareasiedu"
+              target="_blank"
+              radius="xl"
+              size="lg"
+              pl={0}
+              leftSection={
+                <Avatar
+                  src={KwameImg}
+                  radius="xl"
+                  size={24}
+                  mr={5}
+                  alt="Kwame Opare Asiedu"
+                />
+              }>
+              <Text component="span" transform="capitalize">
+                Kwame Opare Asiedu
+              </Text>
+            </Badge>
+
             <ActionIcon
               component="a"
               href="https://github.com/kwameopareasiedu/react-simple-table2"
               target="_blank"
               variant="outline"
               size="md">
-              <DiGithubAlt />
+              <BsGithub />
             </ActionIcon>
           </Group>
         </Flex>
@@ -159,6 +200,14 @@ export const Navbar = (): JSX.Element => {
             variant="outline"
             onClick={() => setOpened(false)}>
             Usage
+          </Button>
+
+          <Button
+            component="a"
+            href="#support"
+            variant="outline"
+            onClick={() => setOpened(false)}>
+            Support
           </Button>
         </Stack>
 

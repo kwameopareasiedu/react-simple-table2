@@ -8,7 +8,7 @@ import {
   Text,
   useMantineTheme
 } from "@mantine/core";
-import { DiGithubAlt } from "react-icons/all";
+import { BsGithub } from "react-icons/all";
 
 export const Footer = (): JSX.Element => {
   const theme = useMantineTheme();
@@ -26,7 +26,7 @@ export const Footer = (): JSX.Element => {
               target="_blank"
               variant="outline"
               size="md">
-              <DiGithubAlt />
+              <BsGithub />
             </ActionIcon>
           </Group>
         </Container>
