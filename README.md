@@ -26,6 +26,12 @@ It also spits out a table with standard HTML semantics: `table`, `thead`
 , `tbody`, `tr`, `th` and `td` elements which allow you to easily target for
 custom styling.
 
+## Demo
+
+Visit
+the [project website](https://kwameopareasiedu.github.io/react-simple-table2/)
+for the full documentation and a CodeSandbox demo.
+
 ## Installation
 
 React Simple Table2 marks `React` and `StyledComponents` as peer dependencies.
