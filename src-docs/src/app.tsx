@@ -8,6 +8,7 @@ import {
   createStyles,
   Grid,
   Image,
+  List,
   Text,
   Title
 } from "@mantine/core";
@@ -258,164 +259,407 @@ export default function App() {
             <Code>&lt;SimpleTable/&gt;</Code> component.
           </Text>
 
-          <Table className={classes.table}>
-            <Thead>
-              <Tr>
-                <Th>Property</Th>
-                <Th>Required</Th>
-                <Th>Description</Th>
-              </Tr>
-            </Thead>
+          <Box mb="xl">
+            <Table className={classes.table}>
+              <Thead>
+                <Tr>
+                  <Th>Property</Th>
+                  <Th>Required</Th>
+                  <Th>Description</Th>
+                </Tr>
+              </Thead>
 
-            <Tbody>
-              <Tr>
-                <Td>
-                  <Code>data</Code>
-                </Td>
-                <Td>
-                  <Badge color="red">Yes</Badge>
-                </Td>
-                <Td>
-                  <Text>The array of items to be displayed in the table</Text>
-                </Td>
-              </Tr>
+              <Tbody>
+                <Tr>
+                  <Td>
+                    <Code>data</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="red">Yes</Badge>
+                  </Td>
+                  <Td>
+                    <Text>The array of items to be displayed in the table</Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>cols</Code>
-                </Td>
-                <Td>
-                  <Badge color="red">Yes</Badge>
-                </Td>
-                <Td>
-                  <Text>The array of column definitions</Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>cols</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="red">Yes</Badge>
+                  </Td>
+                  <Td>
+                    <Text>The array of column definitions</Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>dataKeyFn</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    A function which is called for every item in{" "}
-                    <Code>data</Code>. It should return the React key of the
-                    item
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>dataKeyFn</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      A function which is called for every item in{" "}
+                      <Code>data</Code>. It should return the React key of the
+                      item
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>headerAttrs</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    The HTML props to assign to the table <Code>thead</Code>{" "}
-                    component
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>headerAttrs</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The HTML props to assign to the table <Code>thead</Code>{" "}
+                      component
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>bodyAttrs</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    The HTML props to assign to the table <Code>tbody</Code>{" "}
-                    component
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>bodyAttrs</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The HTML props to assign to the table <Code>tbody</Code>{" "}
+                      component
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>rowAttrsBuilder</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    A function which is called for every <Code>tr</Code>{" "}
-                    component. This should return the HTML props to assign to
-                    each <Code>tbody</Code> <Code>tr</Code> component
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>rowAttrsBuilder</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      A function which is called for every <Code>tr</Code>{" "}
+                      component. This should return the HTML props to assign to
+                      each <Code>tbody</Code> <Code>tr</Code> component
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>mobileCards</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    If true, each item is displayed using a card on small
-                    screens
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>mobileCards</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      If true, each item is displayed using a card on small
+                      screens
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>sort</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    The sorting data object. Contains the <Code>id</Code> of the
-                    sorted column and the <Code>dir</Code> sorting direction
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>sort</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The sorting data object. Contains the <Code>id</Code> of
+                      the sorted column and the <Code>dir</Code> sorting
+                      direction
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>onSort</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    A function which is called when a column is sorted. It is
-                    called with the new <Code>sort</Code> object
-                  </Text>
-                </Td>
-              </Tr>
+                <Tr>
+                  <Td>
+                    <Code>onSort</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      A function which is called when a column is sorted. It is
+                      called with the new <Code>sort</Code> object
+                    </Text>
+                  </Td>
+                </Tr>
 
-              <Tr>
-                <Td>
-                  <Code>loading</Code>
-                </Td>
-                <Td>
-                  <Badge color="green">No</Badge>
-                </Td>
-                <Td>
-                  <Text>
-                    If true, the <Code>SimpleTable</Code> displays an
-                    indeterminate linear progress bar right under the{" "}
-                    <Code>thead</Code> component
-                  </Text>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
+                <Tr>
+                  <Td>
+                    <Code>loading</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      If true, the <Code>SimpleTable</Code> displays an
+                      indeterminate linear progress bar right under the{" "}
+                      <Code>thead</Code> component
+                    </Text>
+                  </Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </Box>
+
+          <Title order={3}>Column Definition</Title>
+          <Text mb="md">
+            A column is defined with an 4-element array defined below:
+          </Text>
+
+          <List mb="md">
+            <List.Item>Column id</List.Item>
+            <List.Item>Column header</List.Item>
+            <List.Item>Column value resolver</List.Item>
+            <List.Item>Optional column property object</List.Item>
+          </List>
+
+          <Text mb="md">
+            An example taken from the above sandbox is{" "}
+            <Code>
+              [ &quot;email&quot;, &quot;Email&quot;, &quot;contact.email&quot;,
+              &#123; visibility: &quot;md&quot; &#125; ]
+            </Code>
+            . This means our column has an <Code>id</Code> of &quot;email&quot;,
+            a column header of &quot;Email&quot;, a value resolver of
+            &quot;contact.email&quot; and a is visible on medium screens
+            upwards.
+          </Text>
+
+          <Box mb="xl">
+            <Table className={classes.table}>
+              <Thead>
+                <Tr>
+                  <Th>Property</Th>
+                  <Th>Required</Th>
+                  <Th>Description</Th>
+                </Tr>
+              </Thead>
+
+              <Tbody>
+                <Tr>
+                  <Td>
+                    <Code>id</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="red">Yes</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The unique id of the column used for rendering and sorting
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>header</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="red">Yes</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The column header. This can be a string or a React
+                      component
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>valueResolver</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="red">Yes</Badge>
+                  </Td>
+                  <Td>
+                    <Text mb="md">
+                      For each data item, the value resolver extracts the value
+                      to display under the column. It can be specified in the
+                      following ways:
+                    </Text>
+
+                    <List>
+                      <List.Item>
+                        <Text>
+                          <Text component="span" weight="bold">
+                            Plain string
+                          </Text>{" "}
+                          ( E.g. <Code>name</Code>) For each data item, the
+                          column value would be <Code>item.name</Code>.
+                        </Text>
+                      </List.Item>
+
+                      <List.Item>
+                        <Text>
+                          <Text component="span" weight="bold">
+                            Dot-notated string
+                          </Text>{" "}
+                          ( E.g. <Code>contact.email</Code>) For each data item,
+                          the column value would be{" "}
+                          <Code>item.contact.email</Code>.
+                        </Text>
+                      </List.Item>
+
+                      <List.Item>
+                        <Text>
+                          <Text component="span" weight="bold">
+                            Function
+                          </Text>{" "}
+                          ( E.g.{" "}
+                          <Code>item =&gt; /* Return Custom value */</Code>) For
+                          each data item, the column value would be the custom
+                          value returned from the function
+                        </Text>
+                      </List.Item>
+                    </List>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>additionalProperties</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      An additional object of properties for the column
+                    </Text>
+                  </Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </Box>
+
+          <Text mb="md">
+            The <Code>additionalProperties</Code> of a column are described
+            below:
+          </Text>
+
+          <Box mb="xl">
+            <Table className={classes.table}>
+              <Thead>
+                <Tr>
+                  <Th>Property</Th>
+                  <Th>Required</Th>
+                  <Th>Description</Th>
+                </Tr>
+              </Thead>
+
+              <Tbody>
+                <Tr>
+                  <Td>
+                    <Code>sortable</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>Indicates if the column is sortable</Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>headerAttrs</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The HTML props to assign to the <Code>th</Code> component
+                      of the column
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>bodyAttrs</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The HTML props to assign to every <Code>td</Code>{" "}
+                      component of the column
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>visibility</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The window width at which the column is visible. It can
+                      take values of <Code>xs</Code>, <Code>sm</Code>,{" "}
+                      <Code>md</Code>, <Code>lg</Code>, <Code>xl</Code> or a
+                      number
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code>headerVisibility</Code>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The window width at which the column{" "}
+                      <Text component="span" weight="bold">
+                        header
+                      </Text>{" "}
+                      is visible. It can take values of <Code>xs</Code>,{" "}
+                      <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code>,{" "}
+                      <Code>xl</Code> or a number
+                    </Text>
+                  </Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </Box>
+
+          {/*<Code block>*/}
+          {/*  [<br />*/}
+          {/*  &nbsp;&nbsp;string // Column id <br />*/}
+          {/*  &nbsp;&nbsp;string | JSX.Element // Column header <br />*/}
+          {/*  &nbsp;&nbsp;string | (item, itemIndex) =&gt; any // Column value*/}
+          {/*  resolver <br />*/}
+          {/*  &nbsp;&nbsp;string | (item, itemIndex) =&gt; any // Column value{" "}*/}
+          {/*  <br />]*/}
+          {/*</Code>*/}
         </Container>
       </Box>
 
