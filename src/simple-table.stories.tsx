@@ -187,3 +187,26 @@ export const Loading: ComponentStory<typeof SimpleTable> = () => {
     />
   );
 };
+
+export const CustomBreakpoint: ComponentStory<typeof SimpleTable> = () => {
+  return (
+    <SimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        ["email", "Email", "contact.email"],
+        [
+          "dob",
+          <i>Date Of Birth</i>,
+          item =>
+            djs(`${item.dob.year}-${item.dob.month}-${item.dob.day}`).format(
+              "Do MMMM YYYY"
+            )
+        ]
+      ]}
+      mobileCards
+      breakpoint="lg"
+    />
+  );
+};

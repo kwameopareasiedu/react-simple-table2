@@ -7,14 +7,7 @@ export type CellResolverFunction<T = any> = (
 
 export type CellResolver<T = any> = string | CellResolverFunction<T>;
 
-export type ColumnVisibility =
-  | "xs"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl"
-  | "xxl"
-  | number;
+export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | number;
 
 export type TableColumn<T = any> = [
   string, // Column id
@@ -24,8 +17,8 @@ export type TableColumn<T = any> = [
     sortable?: boolean;
     headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
     bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
-    visibility?: ColumnVisibility;
-    headerVisibility?: ColumnVisibility;
+    visibility?: Breakpoint;
+    headerVisibility?: Breakpoint;
   }? // Column Options
 ];
 
@@ -59,6 +52,7 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   sort?: SortData;
   onSort?: (data: SortData) => void;
   loading?: boolean;
+  breakpoint?: Breakpoint;
 }
 
 export interface ObjectTableProps<T> extends HTMLAttributes<HTMLTableElement> {
