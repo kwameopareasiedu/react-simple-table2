@@ -23,12 +23,14 @@ export const SimpleTable = <T,>({
   dataKeyFn,
   headAttrs,
   bodyAttrs,
-  rowAttrsBuilder,
   mobileCards,
   loading,
   sort,
   breakpoint,
   onSort,
+  rowAttrsBuilder,
+  thBuilder,
+  tdBuilder,
   ...rest
 }: SimpleTableProps<T>): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -38,6 +40,18 @@ export const SimpleTable = <T,>({
       return breakpoints[breakpoint] || 0;
     } else return breakpoint;
   }, [breakpoint]);
+
+  const buildTh = (value: any) => {
+    if (typeof value === "string") {
+      return thBuilder?.(value) || value;
+    } else return value;
+  };
+
+  const buildTd = (value: any) => {
+    if (typeof value === "string") {
+      return tdBuilder?.(value) || value;
+    } else return value;
+  };
 
   useEffect(() => {
     const onResize = () => {
@@ -64,7 +78,7 @@ export const SimpleTable = <T,>({
                   return (
                     <Th key={id} style={{ padding: 0 }} {...headerAttrs}>
                       <ThFlex onClick={() => onSort(cycleSortData(sort, id))}>
-                        {label}
+                        {buildTh(label)}
                         {sort.id === id && sort.dir === "asc" ? (
                           <TiArrowSortedUp />
                         ) : sort.id === id && sort.dir === "desc" ? (
@@ -78,7 +92,7 @@ export const SimpleTable = <T,>({
                 } else {
                   return (
                     <Th key={id} {...headerAttrs}>
-                      {label}
+                      {buildTh(label)}
                     </Th>
                   );
                 }
@@ -120,8 +134,8 @@ export const SimpleTable = <T,>({
 
                           return (
                             <Tr key={colIdx} {...bodyAttrs}>
-                              <Td>{label}</Td>
-                              <Td>{cellValue}</Td>
+                              <Td>{buildTd(label)}</Td>
+                              <Td>{buildTd(cellValue)}</Td>
                             </Tr>
                           );
                         }
@@ -141,7 +155,7 @@ export const SimpleTable = <T,>({
 
                   return (
                     <Td key={colIdx} {...bodyAttrs}>
-                      {cellValue}
+                      {buildTd(cellValue)}
                     </Td>
                   );
                 }

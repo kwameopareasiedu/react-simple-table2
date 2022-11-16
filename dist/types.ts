@@ -15,7 +15,9 @@ export type TableColumn<T = any> = [
   CellResolver<T>, // Column value resolver
   {
     sortable?: boolean;
+    /** @deprecated Replace with thProps in next major version */
     headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+    /** @deprecated Replace with tdProps in next major version */
     bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
     visibility?: Breakpoint;
     headerVisibility?: Breakpoint;
@@ -42,17 +44,22 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   cols: Array<TableColumn<T>>;
   data: Array<T>;
   dataKeyFn?: (item: T, index: number) => string;
+  /** @deprecated Replace with theadProps in next major version */
   headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  /** @deprecated Replace with tbodyProps in next major version */
   bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  loading?: boolean;
+  mobileCards?: boolean;
+  breakpoint?: Breakpoint;
+  sort?: SortData;
+  onSort?: (data: SortData) => void;
+  /** @deprecated Replace with trPropsBuilder in next major version */
   rowAttrsBuilder?: (
     item: T,
     index: number
   ) => HTMLAttributes<HTMLTableRowElement>;
-  mobileCards?: boolean;
-  sort?: SortData;
-  onSort?: (data: SortData) => void;
-  loading?: boolean;
-  breakpoint?: Breakpoint;
+  thBuilder?: (val: string) => ReactNode;
+  tdBuilder?: (val: string) => ReactNode;
 }
 
 export interface ObjectTableProps<T> extends HTMLAttributes<HTMLTableElement> {
