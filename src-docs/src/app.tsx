@@ -52,6 +52,8 @@ export default function App() {
     <Box className={classes.root}>
       <Navbar />
 
+      <SimpleTable />
+
       <Box id="home" py="3rem">
         <Container size="xl">
           <Title
