@@ -11,9 +11,13 @@ export declare const LinearProgressRoot: FC<HTMLAttributes<HTMLDivElement>>;
 
 export declare const LinearProgressBar: FC<HTMLAttributes<HTMLDivElement>>;
 
-export declare type SimpleTable<T> = FC<SimpleTableProps<T>>;
+export declare const SimpleTable: <T>(
+  props: SimpleTableProps<T>
+) => JSX.Element;
 
-export declare type ObjectTable<T> = FC<ObjectTableProps<T>>;
+export declare const ObjectTable: <T>(
+  props: ObjectTableProps<T>
+) => JSX.Element;
 
 export declare const Table: FC<HTMLAttributes<HTMLTableElement>>;
 

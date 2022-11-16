@@ -17,7 +17,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
-    "react-simple-table2": "^1.0.0-test-1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
