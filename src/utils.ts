@@ -85,9 +85,9 @@ export const transformColumns = (
         resolver,
         sortable: opts?.sortable !== undefined ? opts?.sortable : true,
         visible: columnVisible,
-        headerVisible: headerVisible,
-        headerAttrs: opts?.headerAttrs,
-        bodyAttrs: opts?.bodyAttrs
+        thVisible: headerVisible,
+        thAttrs: opts?.thAttrs,
+        tdAttrs: opts?.tdAttrs
       };
     });
 };

@@ -111,7 +111,7 @@ export const ColumnHeaderVisibility: ComponentStory<
   );
 };
 
-export const WithMobileCards: ComponentStory<typeof SimpleTable> = () => {
+export const DisplayCardsOnMobile: ComponentStory<typeof SimpleTable> = () => {
   return (
     <SimpleTable
       data={data}
@@ -128,7 +128,7 @@ export const WithMobileCards: ComponentStory<typeof SimpleTable> = () => {
             )
         ]
       ]}
-      mobileCards
+      useCards
     />
   );
 };
@@ -157,7 +157,7 @@ export const Sorting: ComponentStory<typeof SimpleTable> = () => {
             )
         ]
       ]}
-      rowAttrsBuilder={item => ({
+      trAttrsBuilder={item => ({
         onClick: event => logOnRowClick({ event, item })
       })}
       sort={sort}
@@ -205,8 +205,8 @@ export const CustomBreakpoint: ComponentStory<typeof SimpleTable> = () => {
             )
         ]
       ]}
-      mobileCards
       breakpoint="lg"
+      useCards
     />
   );
 };
@@ -228,7 +228,6 @@ export const CustomThAndTdBuilders: ComponentStory<typeof SimpleTable> = () => {
             )
         ]
       ]}
-      mobileCards
       thBuilder={val => (
         <span style={{ textDecoration: "line-through" }}>{val}</span>
       )}
@@ -240,6 +239,7 @@ export const CustomThAndTdBuilders: ComponentStory<typeof SimpleTable> = () => {
           </small>
         </span>
       )}
+      useCards
     />
   );
 };

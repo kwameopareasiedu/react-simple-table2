@@ -38,7 +38,7 @@ export const Default: ComponentStory<typeof ObjectTable> = () => {
         ["Email", "email"],
         [<i>Date Of Birth</i>, item => djs(item.dob).format("Do MMMM YYYY")]
       ]}
-      rowAttrs={{ onClick: logClick }}
+      trAttrs={{ onClick: logClick }}
     />
   );
 };

@@ -321,7 +321,8 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>headerAttrs</Code>
+                    <Code sx={{ fontWeight: "bold" }}>theadAttrs</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -336,7 +337,8 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>bodyAttrs</Code>
+                    <Code sx={{ fontWeight: "bold" }}>tbodyAttrs</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -351,7 +353,8 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>rowAttrsBuilder</Code>
+                    <Code sx={{ fontWeight: "bold" }}>trAttrsBuilder</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -367,7 +370,8 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>mobileCards</Code>
+                    <Code sx={{ fontWeight: "bold" }}>useCards</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -429,8 +433,7 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code sx={{ fontWeight: "bold" }}>breakpoint</Code>{" "}
-                    <Badge>1.2.0</Badge>
+                    <Code>breakpoint</Code>{" "}
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -448,8 +451,7 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code sx={{ fontWeight: "bold" }}>thBuilder</Code>{" "}
-                    <Badge>1.2.0</Badge>
+                    <Code>thBuilder</Code>{" "}
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -466,8 +468,7 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code sx={{ fontWeight: "bold" }}>tdBuilder</Code>{" "}
-                    <Badge>1.2.0</Badge>
+                    <Code>tdBuilder</Code>{" "}
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -690,7 +691,8 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>headerAttrs</Code>
+                    <Code sx={{ fontWeight: "bold" }}>thAttrs</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -705,7 +707,8 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>bodyAttrs</Code>
+                    <Code sx={{ fontWeight: "bold" }}>tdAttrs</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
@@ -727,8 +730,8 @@ export default function App() {
                   </Td>
                   <Td>
                     <Text>
-                      The window width at which the column is visible. It can
-                      take values of <Code>xs</Code>, <Code>sm</Code>,{" "}
+                      The window width at which the entire column is visible. It
+                      can take values of <Code>xs</Code>, <Code>sm</Code>,{" "}
                       <Code>md</Code>, <Code>lg</Code>, <Code>xl</Code> or a
                       number
                     </Text>
@@ -737,21 +740,22 @@ export default function App() {
 
                 <Tr>
                   <Td>
-                    <Code>headerVisibility</Code>
+                    <Code sx={{ fontWeight: "bold" }}>thVisibility</Code>
+                    <Badge>2.0.0</Badge>
                   </Td>
                   <Td>
                     <Badge color="green">No</Badge>
                   </Td>
                   <Td>
                     <Text>
-                      The window width at which the column{" "}
+                      The window width at which just the column{" "}
                       <Text component="span" weight="bold">
                         header
                       </Text>{" "}
-                      is visible. It can take values of <Code>xs</Code>,{" "}
-                      <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code>,{" "}
-                      <Code>xl</Code> or a number. (Not to be confused with{" "}
-                      <Code>visibility</Code>)
+                      <Code>th</Code> is visible. It can take values of{" "}
+                      <Code>xs</Code>, <Code>sm</Code>, <Code>md</Code>,{" "}
+                      <Code>lg</Code>, <Code>xl</Code> or a number. (Not to be
+                      confused with <Code>visibility</Code>)
                     </Text>
                   </Td>
                 </Tr>

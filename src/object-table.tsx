@@ -9,20 +9,20 @@ const ObjectTableRoot = styled(Table)``;
 export const ObjectTable = <T,>({
   data,
   props,
-  bodyAttrs,
-  rowAttrs,
+  tbodyAttrs,
+  trAttrs,
   tdAttrs,
   split = 0.35,
   ...rest
 }: ObjectTableProps<T>): any => {
   return (
     <ObjectTableRoot {...rest}>
-      <Tbody {...bodyAttrs}>
+      <Tbody {...tbodyAttrs}>
         {props.map((prop, propIndex: number) => {
           const ratio = split * 100;
 
           return (
-            <Tr key={propIndex} {...rowAttrs}>
+            <Tr key={propIndex} {...trAttrs}>
               <Td style={{ width: `${ratio}%` }} {...tdAttrs}>
                 {prop[0]}
               </Td>
