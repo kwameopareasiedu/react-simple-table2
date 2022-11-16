@@ -187,3 +187,59 @@ export const Loading: ComponentStory<typeof SimpleTable> = () => {
     />
   );
 };
+
+export const CustomBreakpoint: ComponentStory<typeof SimpleTable> = () => {
+  return (
+    <SimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        ["email", "Email", "contact.email"],
+        [
+          "dob",
+          <i>Date Of Birth</i>,
+          item =>
+            djs(`${item.dob.year}-${item.dob.month}-${item.dob.day}`).format(
+              "Do MMMM YYYY"
+            )
+        ]
+      ]}
+      mobileCards
+      breakpoint="lg"
+    />
+  );
+};
+
+export const CustomThAndTdBuilders: ComponentStory<typeof SimpleTable> = () => {
+  return (
+    <SimpleTable
+      data={data}
+      dataKeyFn={item => item?.name || "empty"}
+      cols={[
+        ["name", "Name", "name"],
+        ["email", "Email", "contact.email"],
+        [
+          "dob",
+          <i>Date Of Birth</i>,
+          item =>
+            djs(`${item.dob.year}-${item.dob.month}-${item.dob.day}`).format(
+              "Do MMMM YYYY"
+            )
+        ]
+      ]}
+      mobileCards
+      thBuilder={val => (
+        <span style={{ textDecoration: "line-through" }}>{val}</span>
+      )}
+      tdBuilder={val => (
+        <span>
+          {val}{" "}
+          <small style={{ fontSize: "75%", opacity: "0.5" }}>
+            ({val.length} chars)
+          </small>
+        </span>
+      )}
+    />
+  );
+};

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { SimpleTableProps } from "../dist/types";
 import { Table, Tbody, Td, Th, Thead, ThFlex, Tr } from "./table";
 import {
@@ -23,14 +23,35 @@ export const SimpleTable = <T,>({
   dataKeyFn,
   headAttrs,
   bodyAttrs,
-  rowAttrsBuilder,
   mobileCards,
   loading,
   sort,
+  breakpoint,
   onSort,
+  rowAttrsBuilder,
+  thBuilder,
+  tdBuilder,
   ...rest
 }: SimpleTableProps<T>): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const breakpointWidth = useMemo(() => {
+    if (!breakpoint) return breakpoints["md"];
+    else if (typeof breakpoint === "string") {
+      return breakpoints[breakpoint] || 0;
+    } else return breakpoint;
+  }, [breakpoint]);
+
+  const buildTh = (value: any) => {
+    if (typeof value === "string") {
+      return thBuilder?.(value) || value;
+    } else return value;
+  };
+
+  const buildTd = (value: any) => {
+    if (typeof value === "string") {
+      return tdBuilder?.(value) || value;
+    } else return value;
+  };
 
   useEffect(() => {
     const onResize = () => {
@@ -46,7 +67,7 @@ export const SimpleTable = <T,>({
 
   return (
     <SimpleTableRoot {...rest}>
-      {(windowWidth > breakpoints["md"] || !mobileCards) && (
+      {(windowWidth > breakpointWidth || !mobileCards) && (
         <Thead {...headAttrs}>
           <Tr>
             {transformColumns(cols, windowWidth).map(
@@ -57,7 +78,7 @@ export const SimpleTable = <T,>({
                   return (
                     <Th key={id} style={{ padding: 0 }} {...headerAttrs}>
                       <ThFlex onClick={() => onSort(cycleSortData(sort, id))}>
-                        {label}
+                        {buildTh(label)}
                         {sort.id === id && sort.dir === "asc" ? (
                           <TiArrowSortedUp />
                         ) : sort.id === id && sort.dir === "desc" ? (
@@ -71,7 +92,7 @@ export const SimpleTable = <T,>({
                 } else {
                   return (
                     <Th key={id} {...headerAttrs}>
-                      {label}
+                      {buildTh(label)}
                     </Th>
                   );
                 }
@@ -95,7 +116,7 @@ export const SimpleTable = <T,>({
           const rowAttrs = rowAttrsBuilder?.(item, itemIdx);
 
           // On mobile views, use a stacked two-column table
-          if (windowWidth <= breakpoints["md"] && mobileCards) {
+          if (windowWidth <= breakpointWidth && mobileCards) {
             return (
               <Tr key={keyFn(item, itemIdx)} {...rowAttrs}>
                 <Td
@@ -113,8 +134,8 @@ export const SimpleTable = <T,>({
 
                           return (
                             <Tr key={colIdx} {...bodyAttrs}>
-                              <Td>{label}</Td>
-                              <Td>{cellValue}</Td>
+                              <Td>{buildTd(label)}</Td>
+                              <Td>{buildTd(cellValue)}</Td>
                             </Tr>
                           );
                         }
@@ -134,7 +155,7 @@ export const SimpleTable = <T,>({
 
                   return (
                     <Td key={colIdx} {...bodyAttrs}>
-                      {cellValue}
+                      {buildTd(cellValue)}
                     </Td>
                   );
                 }
