@@ -13,6 +13,8 @@
       in [SimpleTable](src/simple-table.tsx).
     - Renamed `bodyAttrs` **column option** to `tdAttrs`
       in [SimpleTable](src/simple-table.tsx).
+    - Renamed `headerVisible` **column option** to `thVisible`
+      in [SimpleTable](src/simple-table.tsx).
 
 
 - 1.2.0

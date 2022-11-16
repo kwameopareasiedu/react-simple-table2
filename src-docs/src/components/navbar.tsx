@@ -127,7 +127,7 @@ export const Navbar = (): JSX.Element => {
               size="sm"
               weight="normal"
               sx={{ verticalAlign: "text-bottom" }}>
-              v1.2.0
+              v2.0.0
             </Text>
           </Text>
 
