@@ -121,7 +121,14 @@ export const Navbar = (): JSX.Element => {
           </Group>
 
           <Text size="xl" weight="bold">
-            React Simple Table2
+            React Simple Table2{" "}
+            <Text
+              component="span"
+              size="sm"
+              weight="normal"
+              sx={{ verticalAlign: "text-bottom" }}>
+              v1.2.0
+            </Text>
           </Text>
 
           <Group className={classes.social}>

@@ -426,6 +426,61 @@ export default function App() {
                     </Text>
                   </Td>
                 </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code sx={{ fontWeight: "bold" }}>breakpoint</Code>{" "}
+                    <Badge>1.2.0</Badge>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      The window width at which the table switches between
+                      mobile and desktop views. It can take values of{" "}
+                      <Code>xs</Code>, <Code>sm</Code>, <Code>md</Code>,{" "}
+                      <Code>lg</Code>, <Code>xl</Code>, <Code>xxl</Code> or a
+                      number.
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code sx={{ fontWeight: "bold" }}>thBuilder</Code>{" "}
+                    <Badge>1.2.0</Badge>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      If any column <Code>th</Code> resolves to a string, this
+                      function receives the string value and can customize the
+                      cell&apos;s output. This is ideal if you want to customize
+                      the default look for all <Code>th</Code> cells
+                    </Text>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Code sx={{ fontWeight: "bold" }}>tdBuilder</Code>{" "}
+                    <Badge>1.2.0</Badge>
+                  </Td>
+                  <Td>
+                    <Badge color="green">No</Badge>
+                  </Td>
+                  <Td>
+                    <Text>
+                      If any column <Code>td</Code> resolves to a string, this
+                      function receives the string value and can customize the
+                      cell&apos;s output. This is ideal if you want to customize
+                      the default look for all <Code>td</Code> cells
+                    </Text>
+                  </Td>
+                </Tr>
               </Tbody>
             </Table>
           </Box>
