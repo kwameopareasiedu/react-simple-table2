@@ -15,10 +15,8 @@ export type TableColumn<T = any> = [
   CellResolver<T>, // Column value resolver
   {
     sortable?: boolean;
-    /** @deprecated Replace with thProps in next major version */
-    headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
-    /** @deprecated Replace with tdProps in next major version */
-    bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
+    thAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+    tdAttrs?: HTMLAttributes<HTMLTableCellElement>;
     visibility?: Breakpoint;
     headerVisibility?: Breakpoint;
   }? // Column Options
@@ -30,9 +28,9 @@ export interface TransformedTableColumn {
   resolver: CellResolver;
   sortable?: boolean;
   visible: boolean;
-  headerVisible: boolean;
-  headerAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
-  bodyAttrs?: HTMLAttributes<HTMLTableCellElement>;
+  thVisible: boolean;
+  thAttrs?: HTMLAttributes<HTMLTableHeaderCellElement>;
+  tdAttrs?: HTMLAttributes<HTMLTableCellElement>;
 }
 
 export interface SortData {
@@ -44,29 +42,23 @@ export interface SimpleTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   cols: Array<TableColumn<T>>;
   data: Array<T>;
   dataKeyFn?: (item: T, index: number) => string;
-  /** @deprecated Replace with theadProps in next major version */
-  headAttrs?: HTMLAttributes<HTMLTableSectionElement>;
-  /** @deprecated Replace with tbodyProps in next major version */
-  bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
-  loading?: boolean;
-  mobileCards?: boolean;
-  breakpoint?: Breakpoint;
-  sort?: SortData;
-  onSort?: (data: SortData) => void;
-  /** @deprecated Replace with trPropsBuilder in next major version */
-  rowAttrsBuilder?: (
-    item: T,
-    index: number
-  ) => HTMLAttributes<HTMLTableRowElement>;
+  theadAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  tbodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  trAttrsBuilder?: (item: T, i: number) => HTMLAttributes<HTMLTableRowElement>;
   thBuilder?: (val: string) => ReactNode;
   tdBuilder?: (val: string) => ReactNode;
+  sort?: SortData;
+  onSort?: (data: SortData) => void;
+  loading?: boolean;
+  useCards?: boolean;
+  breakpoint?: Breakpoint;
 }
 
 export interface ObjectTableProps<T> extends HTMLAttributes<HTMLTableElement> {
   data: T;
   props: Array<[ReactNode, CellResolver<T>]>;
-  bodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
-  rowAttrs?: HTMLAttributes<HTMLTableRowElement>;
+  tbodyAttrs?: HTMLAttributes<HTMLTableSectionElement>;
+  trAttrs?: HTMLAttributes<HTMLTableRowElement>;
   tdAttrs?: HTMLAttributes<HTMLTableCellElement>;
   split?: number;
 }

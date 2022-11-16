@@ -21,16 +21,16 @@ export const SimpleTable = <T,>({
   data,
   cols,
   dataKeyFn,
-  headAttrs,
-  bodyAttrs,
-  mobileCards,
-  loading,
-  sort,
-  breakpoint,
-  onSort,
-  rowAttrsBuilder,
+  theadAttrs,
+  tbodyAttrs,
+  trAttrsBuilder,
   thBuilder,
   tdBuilder,
+  loading,
+  useCards,
+  breakpoint,
+  sort,
+  onSort,
   ...rest
 }: SimpleTableProps<T>): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -67,16 +67,16 @@ export const SimpleTable = <T,>({
 
   return (
     <SimpleTableRoot {...rest}>
-      {(windowWidth > breakpointWidth || !mobileCards) && (
-        <Thead {...headAttrs}>
+      {(windowWidth > breakpointWidth || !useCards) && (
+        <Thead {...theadAttrs}>
           <Tr>
             {transformColumns(cols, windowWidth).map(
-              ({ id, label, headerAttrs, headerVisible, sortable }) => {
-                if (!headerVisible) {
-                  return <Th key={id} {...headerAttrs} />;
+              ({ id, label, thAttrs, thVisible, sortable }) => {
+                if (!thVisible) {
+                  return <Th key={id} {...thAttrs} />;
                 } else if (sort && sortable) {
                   return (
-                    <Th key={id} style={{ padding: 0 }} {...headerAttrs}>
+                    <Th key={id} style={{ padding: 0 }} {...thAttrs}>
                       <ThFlex onClick={() => onSort(cycleSortData(sort, id))}>
                         {buildTh(label)}
                         {sort.id === id && sort.dir === "asc" ? (
@@ -91,7 +91,7 @@ export const SimpleTable = <T,>({
                   );
                 } else {
                   return (
-                    <Th key={id} {...headerAttrs}>
+                    <Th key={id} {...thAttrs}>
                       {buildTh(label)}
                     </Th>
                   );
@@ -102,7 +102,7 @@ export const SimpleTable = <T,>({
         </Thead>
       )}
 
-      <Tbody {...bodyAttrs}>
+      <Tbody {...tbodyAttrs}>
         {loading && (
           <Tr style={{ border: "none" }}>
             <Td colSpan={cols.length} style={{ padding: 0 }}>
@@ -113,10 +113,10 @@ export const SimpleTable = <T,>({
 
         {data.map((item, itemIdx) => {
           const keyFn = dataKeyFn || (() => itemIdx);
-          const rowAttrs = rowAttrsBuilder?.(item, itemIdx);
+          const rowAttrs = trAttrsBuilder?.(item, itemIdx);
 
           // On mobile views, use a stacked two-column table
-          if (windowWidth <= breakpointWidth && mobileCards) {
+          if (windowWidth <= breakpointWidth && useCards) {
             return (
               <Tr key={keyFn(item, itemIdx)} {...rowAttrs}>
                 <Td
@@ -125,7 +125,7 @@ export const SimpleTable = <T,>({
                   <Table>
                     <Tbody>
                       {transformColumns(cols, windowWidth).map(
-                        ({ label, resolver, bodyAttrs }, colIdx) => {
+                        ({ label, resolver, tdAttrs }, colIdx) => {
                           const cellValue = resolveCellValue(
                             item,
                             resolver,
@@ -133,7 +133,7 @@ export const SimpleTable = <T,>({
                           );
 
                           return (
-                            <Tr key={colIdx} {...bodyAttrs}>
+                            <Tr key={colIdx} {...tdAttrs} /* Not a mistake */>
                               <Td>{buildTd(label)}</Td>
                               <Td>{buildTd(cellValue)}</Td>
                             </Tr>
@@ -150,11 +150,11 @@ export const SimpleTable = <T,>({
           return (
             <Tr key={keyFn(item, itemIdx)} {...rowAttrs}>
               {transformColumns(cols, windowWidth).map(
-                ({ resolver, bodyAttrs }, colIdx) => {
+                ({ resolver, tdAttrs }, colIdx) => {
                   const cellValue = resolveCellValue(item, resolver, itemIdx);
 
                   return (
-                    <Td key={colIdx} {...bodyAttrs}>
+                    <Td key={colIdx} {...tdAttrs}>
                       {buildTd(cellValue)}
                     </Td>
                   );

@@ -75,8 +75,8 @@ describe("Utils tests", () => {
     expect(cols.length).toEqual(3);
     expect(cols[0].id).toEqual("name");
     expect(cols[0].label).toEqual("Name");
-    expect(cols[1].headerVisible).toEqual(true);
-    expect(cols[2].headerVisible).toEqual(false);
+    expect(cols[1].thVisible).toEqual(true);
+    expect(cols[2].thVisible).toEqual(false);
   });
 
   it("should cycle sorting data", () => {
