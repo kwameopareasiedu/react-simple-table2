@@ -3,10 +3,16 @@ import { terser } from "rollup-plugin-terser";
 
 export default {
   input: "src/index.ts",
-  output: {
-    dir: "dist",
-    format: "es"
-  },
+  output: [
+    {
+      file: "dist/index.js",
+      format: "es"
+    },
+    {
+      file: "dist/cjs/index.js",
+      format: "cjs"
+    }
+  ],
   plugins: [typescript(), terser()],
   external: ["react", "styled-components"]
 };
