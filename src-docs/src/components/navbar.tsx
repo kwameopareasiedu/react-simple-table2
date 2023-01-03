@@ -127,7 +127,7 @@ export const Navbar = (): JSX.Element => {
               size="sm"
               weight="normal"
               sx={{ verticalAlign: "text-bottom" }}>
-              v2.0.0
+              v2.0.3
             </Text>
           </Text>
 
@@ -236,7 +236,7 @@ export const Navbar = (): JSX.Element => {
           />
 
           <Stack spacing={0}>
-            <Text>MIT License, 2022</Text>
+            <Text>MIT License, 2023</Text>
             <Text
               component="a"
               href="https://github.com/kwameopareasiedu"

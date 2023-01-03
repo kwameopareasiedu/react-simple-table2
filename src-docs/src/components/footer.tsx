@@ -18,7 +18,7 @@ export const Footer = (): JSX.Element => {
       <Paper radius={0}>
         <Container p="xl">
           <Group position="apart">
-            <Text>React Simple Table2, MIT License, 2022</Text>
+            <Text>React Simple Table2, MIT License, 2023</Text>
 
             <ActionIcon
               component="a"
